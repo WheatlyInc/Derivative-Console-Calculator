@@ -1,0 +1,3 @@
+[submodule "Derivative Console Calculator/extern/googletest"]
+	path = Derivative Console Calculator/extern/googletest
+	url = https://github.com/google/googletest
