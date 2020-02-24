@@ -6,12 +6,15 @@
 /* derivatives of each of its individual terms.
 /*********************************************/
 
+#include <cmath> /* Trig Funcs, */
 #include <iostream>
-#include <vector>
+#include <math.h> /* Log Funcs*/
 #include <set>
+#include <vector>
 
 
 #define monomial pair<double, char>
+
 
 using std::pair;
 using std::vector;
