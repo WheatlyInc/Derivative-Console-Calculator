@@ -354,7 +354,7 @@ MigrationBackup/
 
 
 ##########################
-bin/
+/bin*
 
 CMakeCache.txt
 
@@ -362,4 +362,4 @@ cmake_install.cmake
 
 CMakeFiles
 
-build/
+/build*
