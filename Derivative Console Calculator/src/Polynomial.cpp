@@ -1,4 +1,4 @@
-#include "Polynomial.h"
+#include "../inc/internal/Polynomial.h"
 
 Polynomial::Polynomial()
 {

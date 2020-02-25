@@ -5,13 +5,13 @@
 #add_subdirectory(src)
 add_library(
 	Polynomials 
-	Polynomial.h
+	../inc/internal/Polynomial.h
 	Polynomial.cpp
 )
 
 add_library(
 	Derivatives 
-	Derivative.h
+	../inc/internal/Derivative.h
 	Derivative.cpp
 )
 ###################

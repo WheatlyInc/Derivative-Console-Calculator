@@ -35,5 +35,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\CMakeLists.txt" />
+    <Text Include="test\CMakeLists.txt" />
   </ItemGroup>
 </Project>

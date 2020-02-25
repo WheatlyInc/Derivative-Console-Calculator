@@ -11,7 +11,7 @@
 
 
 #include <iostream>
-#include "Polynomial.h"
+#include "../inc/internal/Polynomial.h"
 
 
 using std::cin;
