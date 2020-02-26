@@ -2,7 +2,6 @@
 #
 # cmake for Derivative Console Calculator Project
 
-#add_subdirectory(src)
 add_library(
 	Polynomials 
 	../inc/internal/Polynomial.h

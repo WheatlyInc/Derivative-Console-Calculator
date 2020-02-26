@@ -4,7 +4,8 @@
  Uses googletest framework for test driven development.
 
 # How to build and run:
-First, cd into Derivative Console Calculator/ and do the following to build a makefile:
+First, cd into Derivative Console Calculator/ and do the following to build makefiles 
+and download googletest as a submodule:
 
 	mkdir build
 	cd build
@@ -13,7 +14,15 @@ First, cd into Derivative Console Calculator/ and do the following to build a ma
 To compile and run, just simply:
 
 	make all
-	./Derivative_Console_Calculator
+	./src/Derivative_Console_Calculator
+	
+To run all unit tests, do:
+
+	make test
+	
+You can also run individual tests. These are the following that are available:
+
+	./test/Polynomial_t
 
 And to clean:
 
