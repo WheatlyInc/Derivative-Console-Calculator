@@ -9,17 +9,20 @@
 #include <cmath> /* Trig Funcs, */
 #include <iostream>
 #include <math.h> /* Log Funcs*/
+#include <string>
 #include <set>
 #include <vector>
 
 
-#define monomial pair<double, char>
-
-
-using std::pair;
-using std::vector;
-using std::ostream;
 using std::istream;
+using std::ostream;
+using std::pair;
+using std::make_pair;
+using std::string;
+using std::vector;
+
+
+#define monomial pair<double, string>
 
 
 class Polynomial
@@ -27,6 +30,7 @@ class Polynomial
     public:
         Polynomial();
         ~Polynomial();
+        vector<monomial> getPolyn() const;
 
     private:
         vector<monomial> polyn;

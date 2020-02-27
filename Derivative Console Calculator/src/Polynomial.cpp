@@ -10,6 +10,11 @@ Polynomial::~Polynomial()
     //dtor
 }
 
+vector<monomial> Polynomial::getPolyn() const
+{
+   return polyn;
+}
+
 ostream& operator<<(ostream& os, Polynomial poly)
 {
 
