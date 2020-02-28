@@ -31,12 +31,14 @@ class Polynomial
         Polynomial();
         ~Polynomial();
         vector<monomial> getPolyn() const;
+		  bool operator==(Polynomial);
+		  friend ostream& operator<<(ostream& os, const Polynomial&);
+		  friend istream& operator>>(istream& is, Polynomial&);
 
     private:
-        vector<monomial> polyn;
+        vector<monomial> m_polyn;
 };
 
-//ostream& operator<<(ostream& os, Polynomial);
-//istream& operator>>(istream& is, Polynomial&);
+
 
 #endif // POLYNOMIAL_H

@@ -12,16 +12,20 @@ Polynomial::~Polynomial()
 
 vector<monomial> Polynomial::getPolyn() const
 {
-   return polyn;
+   return m_polyn;
 }
 
-ostream& operator<<(ostream& os, Polynomial poly)
+bool Polynomial::operator==(Polynomial other_p)
 {
+	return this->getPolyn() == other_p.getPolyn();
+}
 
+ostream& operator<<(ostream& os, const Polynomial& poly)
+{
 	return os << poly;
 }
 
 istream& operator>>(istream& is, Polynomial& poly)
 {
-
+	
 }

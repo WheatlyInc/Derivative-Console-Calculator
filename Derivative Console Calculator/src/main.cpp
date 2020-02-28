@@ -27,7 +27,7 @@ int main()
 
    while (std::cin)
    {
-      Polynomial a;
+		Polynomial a;
       // cin >> a;
    }
    return 0;
