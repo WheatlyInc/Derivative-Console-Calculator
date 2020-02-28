@@ -2,7 +2,8 @@
 
 Monomial::Monomial()
 {
-	//ctor
+	this->m_coefficient = 0;
+	this->m_term = "";
 }
 
 Monomial::Monomial(double coefficient, string term)
