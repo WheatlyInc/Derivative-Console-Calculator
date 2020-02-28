@@ -35,5 +35,6 @@ macro(package_add_test TESTNAME)
 endmacro()
 
 
+package_add_test(Monomial_t Monomial_t.cpp ../src/Monomial.cpp)
 package_add_test(Polynomial_t  Polynomial_t.cpp ../src/Polynomial.cpp)
 

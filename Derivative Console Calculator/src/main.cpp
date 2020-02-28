@@ -22,8 +22,13 @@ using std::endl;
 int main()
 {
    cout << "Welcome to the Derivative Console Calculator!\n\n"
-      << "Please enter a number in the form of a polynomial to find the derivative\n"
-      << "(Use a single letter only as your variable only. Inputing Logs, simplifying like-terms not supported currently)\n";
+      << "Please enter a number in the form of a monomial or polynomial to find the derivative\n"
+      << "(Use a single letter only as your variable only. Inputing Logs, simplifying like-terms not supported currently)\n"
+      << "Constants and the rest of the term of a monomial is supported, but constant first. For example:\n"
+      << "\t2x\n"
+      << "\t3x^2\n"
+      << "\tx^2\n"
+      << "are all valid monomials for input. \n\nHowever:" ;
 
    while (std::cin)
    {
