@@ -32,6 +32,11 @@ bool Monomial::operator==(const Monomial m) const
 	return (this->getCoef() == m.getCoef()) && (this->getTerm() == m.getTerm());
 }
 
+bool Monomial::operator!=(const Monomial m) const
+{
+	return !(*this == m);
+}
+
 ostream& operator<<(ostream& os, const Monomial&)
 {
 	// TODO: insert return statement here

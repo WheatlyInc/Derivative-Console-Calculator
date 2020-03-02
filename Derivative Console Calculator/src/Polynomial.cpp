@@ -20,6 +20,11 @@ bool Polynomial::operator==(const Polynomial other_p) const
 	return this->getPolyn() == other_p.getPolyn();
 }
 
+bool Polynomial::operator!=(const Polynomial other_p) const
+{
+	return !(*this == other_p);
+}
+
 ostream& operator<<(ostream& os, const Polynomial& poly)
 {
 	return os << poly;

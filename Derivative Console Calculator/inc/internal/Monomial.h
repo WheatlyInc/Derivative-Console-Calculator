@@ -29,6 +29,7 @@ class Monomial
 		double getCoef() const;
 		string getTerm() const;
 		bool operator==(const Monomial) const;
+		bool operator!=(const Monomial m) const;
 		friend ostream& operator<<(ostream& os, const Monomial&);
 		friend istream& operator>>(istream& is, Monomial&);
 

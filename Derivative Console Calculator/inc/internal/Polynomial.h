@@ -30,6 +30,7 @@ class Polynomial
         ~Polynomial();
         vector<Monomial> getPolyn() const;
 		  bool operator==(const Polynomial) const;
+        bool operator!=(const Polynomial other_p) const;
 		  friend ostream& operator<<(ostream& os, const Polynomial&);
 		  friend istream& operator>>(istream& is, Polynomial&);
 
