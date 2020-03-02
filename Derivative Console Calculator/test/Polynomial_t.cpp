@@ -9,7 +9,8 @@
 #include "gtest/gtest.h"
  
 
-TEST(polynomials, 0) {
+TEST(polynomialsConstruct, empty) {
 	Polynomial f;
+	EXPECT_TRUE(f.getPolyn().empty());
 
 }
