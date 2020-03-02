@@ -27,7 +27,7 @@ string Monomial::getTerm() const
 	return this->m_term;
 }
 
-bool Monomial::operator==(Monomial m)
+bool Monomial::operator==(const Monomial m) const
 {
 	return (this->getCoef() == m.getCoef()) && (this->getTerm() == m.getTerm());
 }

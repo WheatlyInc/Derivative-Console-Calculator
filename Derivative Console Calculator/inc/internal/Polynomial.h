@@ -13,6 +13,7 @@
 #include <set>
 #include <vector>
 
+#include "Monomial.h"
 
 using std::istream;
 using std::ostream;
@@ -22,23 +23,19 @@ using std::string;
 using std::vector;
 
 
-#define monomial pair<double, string>
-
-
 class Polynomial
 {
     public:
         Polynomial();
         ~Polynomial();
-        vector<monomial> getPolyn() const;
-		  bool operator==(Polynomial);
+        vector<Monomial> getPolyn() const;
+		  bool operator==(const Polynomial) const;
 		  friend ostream& operator<<(ostream& os, const Polynomial&);
 		  friend istream& operator>>(istream& is, Polynomial&);
 
     private:
-        vector<monomial> m_polyn;
+       vector<Monomial> m_polyn;
 };
-
 
 
 #endif // POLYNOMIAL_H

@@ -10,12 +10,12 @@ Polynomial::~Polynomial()
     //dtor
 }
 
-vector<monomial> Polynomial::getPolyn() const
+vector<Monomial> Polynomial::getPolyn() const
 {
    return m_polyn;
 }
 
-bool Polynomial::operator==(Polynomial other_p)
+bool Polynomial::operator==(const Polynomial other_p) const
 {
 	return this->getPolyn() == other_p.getPolyn();
 }

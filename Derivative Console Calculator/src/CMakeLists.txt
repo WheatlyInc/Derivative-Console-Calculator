@@ -6,6 +6,9 @@ add_library(
 	Polynomials 
 	../inc/internal/Polynomial.h
 	Polynomial.cpp
+
+	../inc/internal/Monomial.h
+	Monomial.cpp
 )
 
 add_library(
