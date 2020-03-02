@@ -9,6 +9,7 @@
 #include <cmath> /* Trig Funcs, */
 #include <iostream>
 #include <math.h> /* Log Funcs*/
+#include <sstream> /* istringstream ostringstream */
 #include <string>
 #include <set>
 #include <vector>
@@ -19,6 +20,7 @@ using std::istream;
 using std::ostream;
 using std::pair;
 using std::make_pair;
+using std::stringstream;
 using std::string;
 using std::vector;
 

@@ -27,10 +27,10 @@ bool Polynomial::operator!=(const Polynomial other_p) const
 
 ostream& operator<<(ostream& os, const Polynomial& poly)
 {
-	return os << poly;
+	// TODO: insert return statement here
 }
 
 istream& operator>>(istream& is, Polynomial& poly)
 {
-	
+	// TODO: insert return statement here
 }
