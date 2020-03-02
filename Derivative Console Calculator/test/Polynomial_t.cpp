@@ -6,7 +6,8 @@
 
 
 #include "../inc/internal/Polynomial.h"
-#include "gtest/gtest.h"
+//#include "gtest/gtest.h"
+#include "../extern/googletest/googletest/include/gtest/gtest.h"
  
 
 namespace {
