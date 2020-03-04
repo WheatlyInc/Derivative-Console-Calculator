@@ -2,14 +2,15 @@
 
 Monomial::Monomial()
 {
-	this->m_coefficient = 0;
-	this->m_term = "";
+	m_coefficient = 0;
+	m_term = "";
+	m_valid_mono = false;
 }
 
 Monomial::Monomial(double coefficient, string term)
 {
-	this->m_coefficient = coefficient;
-	this->m_term = term;
+	m_coefficient = coefficient;
+	m_term = term;
 }
 
 Monomial::~Monomial()
@@ -34,12 +35,17 @@ void Monomial::setValidMono(bool b)
 
 double Monomial::getCoef() const
 {
-	return this->m_coefficient;
+	return m_coefficient;
 }
 
 string Monomial::getTerm() const
 {
-	return this->m_term;
+	return m_term;
+}
+
+bool Monomial::getValidMono() const
+{
+	return m_valid_mono;
 }
 
 bool Monomial::operator==(const Monomial m) const

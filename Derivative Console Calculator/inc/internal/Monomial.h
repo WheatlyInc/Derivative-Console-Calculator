@@ -36,6 +36,7 @@ class Monomial
 		void setValidMono(bool);
 		double getCoef() const;
 		string getTerm() const;
+		bool getValidMono() const;
 		bool operator==(const Monomial) const;
 		bool operator!=(const Monomial m) const;
 		friend ostream& operator<<(ostream& os, const Monomial&);
