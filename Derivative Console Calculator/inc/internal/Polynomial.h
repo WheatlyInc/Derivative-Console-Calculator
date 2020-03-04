@@ -28,20 +28,29 @@ using std::string;
 using std::to_string;
 using std::vector;
 
-
+/**
+* This class lets you construct a vector implementation of Monomials, 
+* and supports various operators. 
+* To call for a specific monomial in a polynomial object, do a
+*     poly[0];
+* Implementation for inner operations, such as addition and subtraction
+* of like-unlike monomials, will come soon.
+*/
 class Polynomial
 {
     public:
         Polynomial();
         ~Polynomial();
         vector<Monomial> getPolyn() const;
+        Monomial& operator[](const unsigned int);
+        const Monomial& operator[](const unsigned int) const;
 		  bool operator==(const Polynomial) const;
         bool operator!=(const Polynomial other_p) const;
 		  friend ostream& operator<<(ostream& os, const Polynomial&);
 		  friend istream& operator>>(istream& is, Polynomial&);
 
     private:
-		 bool m_valid_polyn;
+		 bool m_valid;
        vector<Monomial> m_polyn;
 		 // Another vector to keep track of operators +-*/ ? 
 

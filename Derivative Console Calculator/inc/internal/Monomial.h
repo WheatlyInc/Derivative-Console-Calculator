@@ -19,7 +19,12 @@ using std::pair;
 using std::make_pair;
 using std::string;
 
-
+/**
+* This class is a coding representation of a mathematical monomial. An example: 2x 
+* The current implementation requires you to provide a coefficient (represented as a double)
+* and then the context of the term (represented as a string). Will eventually support more
+* sophsticated terms, like: x^2 and log(x)
+*/
 class Monomial
 {
 	public:
