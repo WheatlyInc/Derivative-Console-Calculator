@@ -23,6 +23,7 @@ To run all unit tests, do:
 You can also run individual tests. These are the following that are available:
 
 	./test/Polynomial_t
+    ./test/Monomial_t
 
 And to clean:
 
