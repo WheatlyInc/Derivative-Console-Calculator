@@ -15,6 +15,12 @@ namespace {
 	TEST(polynomialsConstruct, empty) {
 		Polynomial f;
 		EXPECT_TRUE(f.getPolyn().empty());
+		EXPECT_FALSE(f.getValid());
+		string s("");
+		stringstream iss(s), oss;
+		iss >> f; 
+		oss << f;
+		EXPECT_EQ("ERROR: Invalid Polnomial entered.\n", oss.str());
 	};
 
 	/* f(x) = 2x */

@@ -2,7 +2,7 @@
 
 Polynomial::Polynomial()
 {
-    //ctor
+	m_valid = false;
 }
 
 Polynomial::~Polynomial()
@@ -21,6 +21,11 @@ Monomial& Polynomial::operator[](const unsigned int index)
 		std::cerr << "Error: Polynomial Index out of bound: index " << index << " >= " << m_polyn.size() << std::endl;
 	}
 	return m_polyn[index];
+}
+
+bool Polynomial::getValid() const
+{
+	return m_valid;
 }
 
 const Monomial& Polynomial::operator[](const unsigned int index) const

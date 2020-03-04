@@ -43,6 +43,7 @@ class Polynomial
         ~Polynomial();
         vector<Monomial> getPolyn() const;
         Monomial& operator[](const unsigned int);
+        bool getValid() const;
         const Monomial& operator[](const unsigned int) const;
 		  bool operator==(const Polynomial) const;
         bool operator!=(const Polynomial other_p) const;
