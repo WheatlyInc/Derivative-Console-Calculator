@@ -17,6 +17,21 @@ Monomial::~Monomial()
 	//dtor
 }
 
+void Monomial::setCoef(double coef)
+{
+	m_coefficient = coef;
+}
+
+void Monomial::setTerm(string term)
+{
+	m_term = term;
+}
+
+void Monomial::setValidMono(bool b)
+{
+	m_valid_mono = b;
+}
+
 double Monomial::getCoef() const
 {
 	return this->m_coefficient;

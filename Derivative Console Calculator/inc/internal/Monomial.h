@@ -26,6 +26,9 @@ class Monomial
 		Monomial();
 		Monomial(double, string);
 		~Monomial();
+		void setCoef(double);
+		void setTerm(string);
+		void setValidMono(bool);
 		double getCoef() const;
 		string getTerm() const;
 		bool operator==(const Monomial) const;
@@ -34,6 +37,7 @@ class Monomial
 		friend istream& operator>>(istream& is, Monomial&);
 
 	private:
+		bool m_valid_mono;
 		double m_coefficient;
 		string m_term;
 };

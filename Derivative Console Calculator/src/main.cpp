@@ -28,12 +28,15 @@ int main()
       << "\t2x\n"
       << "\t3x^2\n"
       << "\tx^2\n"
-      << "are all valid monomials for input. \n\nHowever:" ;
+      << "are all valid monomials for input. \n\nHowever:\n"
+		<< "\tx2\n"
+		<< "is not.\n";
+	cout << "Enter your problem here: ";
 
    while (std::cin)
    {
 		Polynomial a;
-      // cin >> a;
+      cin >> a;
    }
    return 0;
 }
