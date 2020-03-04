@@ -37,4 +37,4 @@ endmacro()
 
 package_add_test(Monomial_t Monomial_t.cpp ../src/Monomial.cpp)
 package_add_test(Polynomial_t Polynomial_t.cpp ../src/Polynomial.cpp ../src/Monomial.cpp)
-
+package_add_test(Derivative_t Derivative_t.cpp ../src/Derivative.cpp ../src/Polynomial.cpp ../src/Monomial.cpp)

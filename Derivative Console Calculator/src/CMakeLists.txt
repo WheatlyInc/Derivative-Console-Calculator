@@ -15,6 +15,12 @@ add_library(
 	Derivatives 
 	../inc/internal/Derivative.h
 	Derivative.cpp
+
+	../inc/internal/Polynomial.h
+	Polynomial.cpp
+
+	../inc/internal/Monomial.h
+	Monomial.cpp
 )
 
 add_library(
