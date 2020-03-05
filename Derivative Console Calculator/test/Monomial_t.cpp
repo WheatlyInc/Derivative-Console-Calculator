@@ -21,21 +21,21 @@ namespace {
 
 	/* f(x) = 2x*/
 	TEST(monomialsConstruct, TWOx) {
-		Monomial m(2, "x");
+		Monomial m("2x");
 		EXPECT_EQ(m.getCoef(), 2);
 		EXPECT_EQ(m.getTerm(), "x");
 	};
 
 	/* f(x) = 2x^3*/
 	TEST(monomialsConstruct, TWOxEXP3) {
-		Monomial m(2, "x^3");
+		Monomial m("2x^3");
 		EXPECT_EQ(m.getCoef(), 2);
 		EXPECT_EQ(m.getTerm(), "x^3");
 	};
 
 	/* f(x) == f(x) where f(x) = x */
 	TEST(monomialsCompare, mEqualsm) {
-		Monomial m(1, "x");
+		Monomial m("x");
 		EXPECT_TRUE(m == m);
 	};
 

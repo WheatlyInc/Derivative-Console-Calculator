@@ -56,30 +56,30 @@ ostream& operator<<(ostream& os, const Polynomial& poly)
 
 istream& operator>>(istream& is, Polynomial& poly)
 {
+	Monomial m1;
 	int num_lft_parenth(0), num_rht_parenth(0);
 	bool open_parenth(false); 
 	string s; 
+	/* Monomials must have either a coefficient, some function of x, or both.
+	*	They must be distinct and cannot blend with other monomials.
+	**/
+	// Building the first monomial // 
+	/* Analyze the first character to be valid.*/
 	is >> s;
-	// Analyze first character to be valid
-	if (!isdigit(s[0]) && s[0] != 'x') {
-		poly.m_valid = false;
-	}
-	else if (isdigit(s[0])) {
-		Monomial m1;
-		string str_coef; str_coef += (s[0]);
-		int i(1);
-		for (i; i < s.size() && isdigit(s[i]); i++) {
-			str_coef += s[i];
-		}
-		m1.setCoef(stod(str_coef));
-		if (s[i] == 'x') {
-			m1.setTerm("x");
-			m1.setValidMono(true);
-			poly.m_valid = true;
-		}
+	if (isdigit(s[0]) || s[0] == 'x') {
+		Monomial m1(s);
 		poly.m_polyn.push_back(m1);
+		if (m1.getValidMono())
+			poly.m_valid = true;
+	}
+	else {
+		poly.m_valid = false;
+		std::cerr << "ERROR: Invalid startpoint to input expression: \"" << s[0] << "\"" <<  std::endl;
+		return is;
 	}
 
+
+	
 	while (is >> s && poly.m_valid != false) {}
 	return is;
 }

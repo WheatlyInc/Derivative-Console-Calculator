@@ -6,7 +6,6 @@
 /* derivatives of each of its individual terms.
 /*********************************************/
 
-#include <cctype> /* isdigit*/
 #include <cmath> /* Trig Funcs, */
 #include <iostream>
 #include <math.h> /* Log Funcs*/
@@ -22,7 +21,6 @@ using std::istream;
 using std::ostream;
 using std::pair;
 using std::make_pair;
-using std::stod;
 using std::stringstream;
 using std::string;
 using std::to_string;

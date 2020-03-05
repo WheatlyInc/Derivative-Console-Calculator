@@ -5,6 +5,7 @@
 /* or as building blocks for the Polynomial class.
 /****************************************************/
 
+#include <cctype> /* isdigit*/
 #include <cmath> /* Trig Funcs, */
 #include <iostream>
 #include <math.h> /* Log Funcs*/
@@ -17,6 +18,7 @@ using std::istream;
 using std::ostream;
 using std::pair;
 using std::make_pair;
+using std::stod;
 using std::string;
 
 /**
@@ -29,7 +31,7 @@ class Monomial
 {
 	public:
 		Monomial();
-		Monomial(double, string);
+		Monomial(string);
 		~Monomial();
 		void setCoef(double);
 		void setTerm(string);
