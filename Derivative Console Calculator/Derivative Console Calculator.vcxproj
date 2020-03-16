@@ -261,6 +261,7 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Derivative.cpp" />
     <ClCompile Include="src\Polynomial.cpp" />
+    <ClCompile Include="test\Derivative_t.cpp" />
     <ClCompile Include="test\Monomial_t.cpp" />
     <ClCompile Include="test\Polynomial_t.cpp" />
   </ItemGroup>
