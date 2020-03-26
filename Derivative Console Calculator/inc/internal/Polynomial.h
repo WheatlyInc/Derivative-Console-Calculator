@@ -26,6 +26,10 @@ using std::string;
 using std::to_string;
 using std::vector;
 
+
+enum op {};
+
+
 /**
 * This class lets you construct a vector implementation of Monomials, 
 * and supports various operators. 
@@ -36,7 +40,7 @@ using std::vector;
 */
 class Polynomial
 {
-    public:
+   public:
         Polynomial();
         ~Polynomial();
         vector<Monomial> getPolyn() const;
@@ -48,7 +52,7 @@ class Polynomial
 		  friend ostream& operator<<(ostream& os, const Polynomial&);
 		  friend istream& operator>>(istream& is, Polynomial&);
 
-    private:
+    protected:
 		 bool m_valid;
        vector<Monomial> m_polyn;
 		 // Another vector to keep track of operators +-*/ ? 

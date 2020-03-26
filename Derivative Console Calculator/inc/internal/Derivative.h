@@ -11,19 +11,14 @@
 #include "Polynomial.h"
 
 
-using namespace std;
 
 
-class Derivative
+
+class Derivative : public Polynomial
 {
     public:
-        Derivative();
-        Derivative(double);
-        Derivative(double, string);
+        Derivative(Polynomial&);
         virtual ~Derivative();
-
-    private:
-       Polynomial poly;
 };
 
 
