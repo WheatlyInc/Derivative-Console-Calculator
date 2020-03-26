@@ -11,7 +11,7 @@
 
 
 #include <iostream>
-#include "../inc/internal/Polynomial.h"
+#include "../inc/internal/Derivative.h"
 
 
 using std::cin;
@@ -21,6 +21,7 @@ using std::endl;
 
 int main()
 {
+   string s;
    cout << "Welcome to the Derivative Console Calculator!\n\n"
       << "Please enter a number in the form of a monomial or polynomial to find the derivative\n"
       << "(Use a single letter only as your variable only. Inputing Logs, simplifying like-terms not supported currently)\n"
@@ -33,10 +34,26 @@ int main()
 		<< "is not.\n";
 	cout << "Enter your problem here: ";
 
-   while (std::cin)
+   while (cin)
    {
-		Polynomial a;
-      cin >> a;
+      cout << endl << "f(x) = ";
+		Polynomial p;
+      cin >> s;
+      stringstream iss(s);
+      iss >> p;
+      Derivative d(p);
+      if (p.getValid()) {
+         if (d.getValid()) {
+            cout << "The derivative of " << p << " is : \n" << d << endl;
+         }
+         else {
+            std::cerr << "Couldn't find derivative: " << endl;
+         }
+      }
+      else {
+         cout << "A problem was found with your input:\n";
+      }
+      
    }
    return 0;
 }
