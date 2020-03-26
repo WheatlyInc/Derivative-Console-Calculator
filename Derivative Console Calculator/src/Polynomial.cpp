@@ -15,6 +15,15 @@ vector<Monomial> Polynomial::getPolyn() const
    return m_polyn;
 }
 
+int Polynomial::getSize() const
+{
+	return m_polyn.size();
+}
+
+void Polynomial::combineliketerms()
+{
+}
+
 Monomial& Polynomial::operator[](const unsigned int index)
 {
 	if (index >= m_polyn.size()) { 

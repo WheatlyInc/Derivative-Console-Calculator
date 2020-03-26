@@ -44,6 +44,8 @@ class Polynomial
         Polynomial();
         ~Polynomial();
         vector<Monomial> getPolyn() const;
+        int getSize() const;
+        void combineliketerms();
         Monomial& operator[](const unsigned int);
         bool getValid() const;
         const Monomial& operator[](const unsigned int) const;
