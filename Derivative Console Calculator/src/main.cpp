@@ -23,16 +23,16 @@ int main()
 {
    string s;
    cout << "Welcome to the Derivative Console Calculator!\n\n"
-      << "Please enter a number in the form of a monomial or polynomial to find the derivative\n"
-      << "(Use a single letter only as your variable only. Inputing Logs, simplifying like-terms not supported currently)\n"
-      << "Constants and the rest of the term of a monomial is supported, but constant first. For example:\n"
-      << "\t2x\n"
-      << "\t3x^2\n"
-      << "\tx^2\n"
-      << "are all valid monomials for input. \n\nHowever:\n"
-		<< "\tx2\n"
-		<< "is not.\n";
-	cout << "Enter your problem here: ";
+        << "Please enter a number in the form of a monomial or polynomial to find the derivative\n"
+        << "(Use a single letter only as your variable only. Inputing Logs, simplifying like-terms not supported currently)\n"
+        << "Constants and the rest of the term of a monomial is supported, but constant goes first. For example:\n"
+        << "\t2x\n"
+        << "\t3x^2\n"
+        << "\tx^2\n"
+        << "are all valid monomials for input. \n\nHowever:\n"
+		  << "\tx2\n"
+		  << "is not.\n";
+	cout << "Enter your problem into the function statement below: ";
 
    while (cin)
    {

@@ -42,7 +42,6 @@ class Polynomial
 {
    public:
         Polynomial();
-        ~Polynomial();
         vector<Monomial> getPolyn() const;
         int getSize() const;
         void combineliketerms();

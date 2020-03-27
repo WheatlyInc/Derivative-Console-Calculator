@@ -32,7 +32,6 @@ class Monomial
 	public:
 		Monomial();
 		Monomial(string);
-		~Monomial();
 		void setCoef(double);
 		void setTerm(string);
 		void setValidMono(bool);

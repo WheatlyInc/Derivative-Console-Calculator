@@ -31,11 +31,6 @@ Monomial::Monomial(string s)
 	}
 }
 
-Monomial::~Monomial()
-{
-	//dtor
-}
-
 void Monomial::setCoef(double coef)
 {
 	m_coefficient = coef;

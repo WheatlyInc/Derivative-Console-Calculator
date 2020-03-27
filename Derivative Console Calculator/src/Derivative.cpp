@@ -2,7 +2,6 @@
 
 Derivative::Derivative(Polynomial& poly)
 {
-
    if (poly.getValid() == false) {
       std::cerr << "ERROR: Call to take derivative on invalid polynomial" << std::endl;
       m_valid = false;
@@ -37,9 +36,4 @@ Derivative::Derivative(Polynomial& poly)
       }
    }
    m_valid = true;
-}
-
-Derivative::~Derivative()
-{
-    //dtor
 }

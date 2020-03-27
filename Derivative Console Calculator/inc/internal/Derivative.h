@@ -18,7 +18,6 @@ class Derivative : public Polynomial
 {
     public:
         Derivative(Polynomial&);
-        virtual ~Derivative();
 };
 
 

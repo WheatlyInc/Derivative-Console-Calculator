@@ -5,11 +5,6 @@ Polynomial::Polynomial()
 	m_valid = false;
 }
 
-Polynomial::~Polynomial()
-{
-    //dtor
-}
-
 vector<Monomial> Polynomial::getPolyn() const
 {
    return m_polyn;
