@@ -17,9 +17,11 @@
 class Derivative : public Polynomial
 {
     public:
-        Derivative(Polynomial&);
+        Derivative(const Polynomial&);
 };
 
+
+Monomial deriveMonomial(const Monomial&);
 
 
 #endif // DERIVATIVE_H

@@ -41,8 +41,8 @@ int main()
       cin >> s;
       stringstream iss(s);
       iss >> p;
-      Derivative d(p);
       if (p.getValid()) {
+         Derivative d(p);
          if (d.getValid()) {
             cout << "The derivative of " << p << " is : \n" << d << endl;
          }
