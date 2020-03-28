@@ -39,4 +39,12 @@ namespace {
 		EXPECT_TRUE(m == m);
 	};
 
+	/* Outputting Monomial */
+	TEST(monomialOutput, TwoxEXP3) {
+		Monomial m("2x^3");
+		stringstream oss;
+		oss << m;
+		EXPECT_EQ(oss.str(), "2x^3");
+	};
+
 } // namespace
