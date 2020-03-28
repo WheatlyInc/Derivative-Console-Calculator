@@ -24,6 +24,7 @@ namespace {
 		Monomial m("2x");
 		EXPECT_EQ(m.getCoef(), 2);
 		EXPECT_EQ(m.getTerm(), "x");
+		EXPECT_TRUE(m.getValidMono());
 	};
 
 	/* f(x) = 2x^3*/
@@ -31,6 +32,7 @@ namespace {
 		Monomial m("2x^3");
 		EXPECT_EQ(m.getCoef(), 2);
 		EXPECT_EQ(m.getTerm(), "x^3");
+		EXPECT_TRUE(m.getValidMono());
 	};
 
 	/* f(x) == f(x) where f(x) = x */
