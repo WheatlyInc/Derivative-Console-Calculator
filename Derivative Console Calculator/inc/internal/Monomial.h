@@ -9,17 +9,21 @@
 #include <cmath> /* Trig Funcs, */
 #include <iostream>
 #include <math.h> /* Log Funcs*/
-#include <string>
 #include <set>
-#include <vector>
+#include <sstream> /* istringstream ostringstream */
+#include <string>
 
 
+using std::isdigit;
 using std::istream;
 using std::ostream;
-using std::pair;
-using std::make_pair;
 using std::stod;
 using std::string;
+using std::stringstream;
+using std::to_string;
+
+
+enum op {};
 
 
 /**

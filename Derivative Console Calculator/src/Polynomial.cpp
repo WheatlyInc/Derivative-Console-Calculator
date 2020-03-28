@@ -91,10 +91,15 @@ bool Polynomial::operator!=(const Polynomial other_p) const
 **/
 ostream& operator<<(ostream& os, const Polynomial& poly)
 {
-	if (poly.m_valid == true)
-		return os << poly[0].getCoef() << poly[0].getTerm();
+	if (poly.m_valid == true) {
+		for (int i(0); i < poly.getSize(); i++) {
+			os << poly[i];
+		}
+		return os;
+	}
 	else 
 		return os << "ERROR: Invalid Polnomial entered.\n";
+	
 }
 
 /** 

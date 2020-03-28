@@ -108,9 +108,9 @@ bool Monomial::operator!=(const Monomial m) const
  *	Pre:
  * Pro:
  **/
-ostream& operator<<(ostream& os, const Monomial&)
+ostream& operator<<(ostream& os, const Monomial& mono)
 {
-	// TODO: insert return statement here
+	return os << mono.getCoef() << mono.getTerm();
 }
 
 /**
