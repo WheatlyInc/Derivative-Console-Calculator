@@ -23,8 +23,22 @@ using std::stringstream;
 using std::to_string;
 
 
-enum op {};
+enum arithmetic_op {
+	plus=0,
+	minus,
+	times,
+	divide,
+};
 
+enum quantity {
+	lft_parenth,
+	rht_parenth,
+};
+
+enum funcs {
+	log_10,
+	natural_log,
+};
 
 /**
 * This class is a coding representation of a mathematical monomial. An example: 2x 
