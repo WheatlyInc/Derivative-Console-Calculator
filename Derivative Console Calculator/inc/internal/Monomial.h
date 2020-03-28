@@ -21,11 +21,14 @@ using std::make_pair;
 using std::stod;
 using std::string;
 
+
 /**
 * This class is a coding representation of a mathematical monomial. An example: 2x 
 * The current implementation requires you to provide a coefficient (represented as a double)
 * and then the context of the term (represented as a string). Will eventually support more
-* sophsticated terms, like: x^2 and log(x)
+* sophsticated terms, like: x^2 and log(x). The construction will focus on validating passed
+* params. 
+*
 */
 class Monomial
 {
@@ -41,7 +44,6 @@ class Monomial
 		bool operator==(const Monomial) const;
 		bool operator!=(const Monomial m) const;
 		friend ostream& operator<<(ostream& os, const Monomial&);
-		friend istream& operator>>(istream& is, Monomial&);
 
 	private:
 		bool m_valid_mono;

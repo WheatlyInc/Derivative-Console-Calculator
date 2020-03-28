@@ -6,14 +6,17 @@
 /*  single term from its inherited class Polynomial
 /***********************************************************/
 
+
 #include <iostream>
 #include <vector>
 #include "Polynomial.h"
 
 
-
-
-
+/**
+* This class is the superclass to the class Polynomial. It uses the same 
+* structure of Polynomials to find the differentiated version of an existing 
+* Polynomial, and to represent and print that version.
+*/
 class Derivative : public Polynomial
 {
     public:

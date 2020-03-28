@@ -1,5 +1,11 @@
 #include "../inc/internal/Derivative.h"
 
+/** Use this function to take the derivative of an exisiting polynomial.
+  * Pre:
+ *		Takes in a valid polynomial.
+ * Post:
+ *		Will attempt to derive the entire polynomial expression. Will output any errors or calculation failures.
+**/
 Derivative::Derivative(const Polynomial& poly)
 {
    if (poly.getValid() == false) {
@@ -13,7 +19,13 @@ Derivative::Derivative(const Polynomial& poly)
    m_valid = true;
 }
 
-
+/**
+  * Pre:
+ *		Requires a valid monomial
+ * Post:
+ *		Will produce the derived form of the inputed monomial. Will call several check functions
+ *    to determine how to solve certain problems.
+**/
 Monomial deriveMonomial(const Monomial& mono)
 {
    int exp(0);
