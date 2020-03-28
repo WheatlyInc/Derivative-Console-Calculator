@@ -4,17 +4,33 @@
 *
 **/
 
+
 #include "../inc/internal/Polynomial.h"
-#include "gtest/gtest.h"
+//#include "gtest/gtest.h"
+#include "../extern/googletest/googletest/include/gtest/gtest.h"
+ 
 
+namespace {
 
-TEST(true, false) {
-	EXPECT_EQ(true, true);
-	EXPECT_EQ(false, false);
-}
+	TEST(polynomialsConstruct, empty) {
+		Polynomial f;
+		EXPECT_TRUE(f.getPolyn().empty());
+		EXPECT_FALSE(f.getValid());
+		string s("");
+		stringstream iss(s), oss;
+		iss >> f; 
+		oss << f;
+		EXPECT_EQ("ERROR: Invalid Polnomial entered.\n", oss.str());
+	};
 
-int zero(0), one(1);
-TEST(zero, one) {
-	EXPECT_EQ(zero, 0);
-	EXPECT_EQ(one, 1);
+	/* f(x) = 2x */
+	TEST(polynomialsConstruct, TWOx) {
+		Polynomial f;
+		string s("2x");
+		stringstream iss(s), oss;
+		iss >> f;
+		oss << f;
+		EXPECT_EQ(iss.str(), oss.str());
+	};
+
 }

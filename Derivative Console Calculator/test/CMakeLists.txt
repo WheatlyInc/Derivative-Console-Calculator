@@ -11,6 +11,12 @@ mark_as_advanced(
     gtest_disable_pthreads gtest_force_shared_crt gtest_hide_internal_symbols
 )
 
+# Keep IDEs that support folders clean
+set_target_properties(gtest PROPERTIES FOLDER extern)
+set_target_properties(gtest_main PROPERTIES FOLDER extern)
+set_target_properties(gmock PROPERTIES FOLDER extern)
+set_target_properties(gmock_main PROPERTIES FOLDER extern)
+
 
 macro(package_add_test TESTNAME)
     # create an exectuable in which the tests will be stored
@@ -29,5 +35,6 @@ macro(package_add_test TESTNAME)
 endmacro()
 
 
-package_add_test(Polynomial_t Polynomial_t.cpp)
-
+package_add_test(Monomial_t Monomial_t.cpp ../src/Monomial.cpp)
+package_add_test(Polynomial_t Polynomial_t.cpp ../src/Polynomial.cpp ../src/Monomial.cpp)
+package_add_test(Derivative_t Derivative_t.cpp ../src/Derivative.cpp ../src/Polynomial.cpp ../src/Monomial.cpp)
