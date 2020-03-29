@@ -6,7 +6,9 @@
 /* derivatives of each of its individual terms.
 /*********************************************/
 
+
 #include <vector>
+
 
 #include "Monomial.h"
 

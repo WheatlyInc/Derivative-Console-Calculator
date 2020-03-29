@@ -35,6 +35,14 @@ namespace {
 		EXPECT_TRUE(m.getValidMono());
 	};
 
+	/* Omitting unnecesary exponent 0 on a simple monomial */
+	TEST(monomialSimplify, zeroExp) {
+		Monomial m("2x^0");
+		EXPECT_EQ(m.getCoef(), 2);
+		EXPECT_EQ(m.getTerm(), "");
+		EXPECT_TRUE(m.getValidMono());
+	}
+
 	/* f(x) == f(x) where f(x) = x */
 	TEST(monomialsCompare, mEqualsm) {
 		Monomial m("x");

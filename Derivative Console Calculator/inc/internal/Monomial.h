@@ -5,6 +5,7 @@
 /* or as building blocks for the Polynomial class.
 /****************************************************/
 
+
 #include <cctype> /* isdigit*/
 #include <cmath> /* Trig Funcs, */
 #include <iostream>
@@ -35,6 +36,10 @@ enum quantity {
 	rht_parenth,
 };
 
+enum exponent {
+	exponent,
+};
+
 enum funcs {
 	log_10,
 	natural_log,
@@ -58,6 +63,7 @@ class Monomial
 		void setValidMono(bool);
 		double getCoef() const;
 		string getTerm() const;
+		bool isNum(const string) const;
 		bool getValidMono() const;
 		bool operator==(const Monomial) const;
 		bool operator!=(const Monomial m) const;
