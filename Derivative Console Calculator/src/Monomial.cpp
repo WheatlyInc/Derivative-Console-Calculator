@@ -151,8 +151,8 @@ bool Monomial::operator!=(const Monomial m) const
  **/
 ostream& operator<<(ostream& os, const Monomial& mono)
 {
-	if (mono.getTerm() == "x^1")
-		return os << mono.getCoef() << "x";
+	if (mono.getTerm() == "")
+		return os << mono.getCoef();
 	else
 		return os << mono.getCoef() << mono.getTerm();
 }

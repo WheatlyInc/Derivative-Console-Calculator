@@ -38,8 +38,11 @@ namespace {
 	/* Omitting unnecesary exponent 0 on a simple monomial */
 	TEST(monomialSimplify, zeroExp) {
 		Monomial m("2x^0");
+		stringstream oss;
+		oss << m;
 		EXPECT_EQ(m.getCoef(), 2);
 		EXPECT_EQ(m.getTerm(), "");
+		EXPECT_EQ(oss.str(), "2");
 		EXPECT_TRUE(m.getValidMono());
 	}
 

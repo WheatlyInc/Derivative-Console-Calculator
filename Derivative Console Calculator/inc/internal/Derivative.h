@@ -13,7 +13,7 @@
 
 
 /**
-* This class is the superclass to the class Polynomial. It uses the same 
+* This class is the subclass to the class Polynomial. It uses the same 
 * structure of Polynomials to find the differentiated version of an existing 
 * Polynomial, and to represent and print that version.
 */
