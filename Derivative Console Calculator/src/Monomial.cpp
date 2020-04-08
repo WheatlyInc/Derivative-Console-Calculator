@@ -86,20 +86,6 @@ Monomial::Monomial(string s)
 	}
 }
 
-void Monomial::setCoef(double coef)
-{
-	m_coefficient = coef;
-}
-
-/**
- * Pre: 
- *		Used by friend and class member functions. Assumes validated parameters
-**/
-void Monomial::setTerm(string term)
-{
-	m_term = term;
-}
-
 /**
  * Pre:
  *		Used by friend and class member functions. Assumes validated parameters
@@ -107,6 +93,18 @@ void Monomial::setTerm(string term)
 void Monomial::setValidMono(bool b)
 {
 	m_valid_mono = b;
+}
+
+/**
+ * Pre:
+ *		Used by the Monomial Class to remove trailing zeros from an input string. 
+ *		Expects ONLY a double in the form of a string.
+**/
+void Monomial::omitTrailZeros(string& str_Num)
+{
+	str_Num.erase(str_Num.find_last_not_of('0') + 1, std::string::npos);
+	if (str_Num[str_Num.size() - 1] == '.')
+		str_Num.pop_back();
 }
 
 double Monomial::getCoef() const
