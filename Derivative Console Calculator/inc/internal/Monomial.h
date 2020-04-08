@@ -48,9 +48,8 @@ class Monomial
 	public:
 		Monomial();
 		Monomial(string);
-		void setCoef(double);
-		void setTerm(string);
 		void setValidMono(bool);
+		void omitTrailZeros(string&);
 		double getCoef() const;
 		string getTerm() const;
 		bool isNum(const string) const;
