@@ -14,7 +14,7 @@ Derivative::Derivative(const Polynomial& poly)
       return;
    }
    for (int i(0); i < poly.getSize(); i++) {
-      m_polyn.push_back(deriveMonomial(poly[i]));
+      m_polyn.push_back(move(deriveMonomial(poly[i])));
    }
    m_valid = true;
 }

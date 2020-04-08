@@ -123,7 +123,7 @@ istream& operator>>(istream& is, Polynomial& poly)
 	is >> s;
 	if (isdigit(s[0]) || s[0] == 'x') {
 		Monomial m1(s);
-		poly.m_polyn.push_back(m1);
+		poly.m_polyn.push_back(move(m1));
 		if (m1.getValidMono())
 			poly.m_valid = true;
 	}

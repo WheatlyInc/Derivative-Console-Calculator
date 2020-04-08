@@ -13,6 +13,7 @@
 #include "Monomial.h"
 
  
+using std::move; // Will let me push objects into a vector without "copying" into the vector, which saves space.
 using std::vector;
 
 
@@ -28,17 +29,17 @@ using std::vector;
 class Polynomial
 {
    public:
-      Polynomial();
-      vector<Monomial> getPolyn() const;
-      int getSize() const;
-      void combineliketerms();
-      Monomial& operator[](const unsigned int);
-      bool getValid() const;
-      const Monomial& operator[](const unsigned int) const;
-      bool operator==(const Polynomial) const;
-      bool operator!=(const Polynomial other_p) const;
-      friend ostream& operator<<(ostream& os, const Polynomial&);
-	   friend istream& operator>>(istream& is, Polynomial&);
+        Polynomial();
+        vector<Monomial> getPolyn() const;
+        int getSize() const;
+        void combineliketerms();
+        Monomial& operator[](const unsigned int);
+        bool getValid() const;
+        const Monomial& operator[](const unsigned int) const;
+        bool operator==(const Polynomial) const;
+        bool operator!=(const Polynomial other_p) const;
+        friend ostream& operator<<(ostream& os, const Polynomial&);
+        friend istream& operator>>(istream& is, Polynomial&);
 
     protected:
 		 bool m_valid;
