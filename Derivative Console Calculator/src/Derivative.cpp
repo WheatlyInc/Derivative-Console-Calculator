@@ -24,11 +24,11 @@ Derivative::Derivative(const Polynomial& poly)
  *		Requires a valid monomial
  * Post:
  *		Will produce the derived form of the inputed monomial. Will call several check functions
- *    to determine how to solve certain problems.
+ *      to determine how to solve certain problems.
 **/
 Monomial deriveMonomial(const Monomial& mono)
 {
-   int exp(0);
+   double exp(0);
    Monomial *m = nullptr;
    double _coef = mono.getCoef();
    string _term = mono.getTerm();
@@ -48,15 +48,10 @@ Monomial deriveMonomial(const Monomial& mono)
                for (k; k < _term.size() && isdigit(_term[k]); k++)
                   str_exponent += _term[k];
                exp = stod(str_exponent);
-               //m->setCoef(exp * _coef);
                new_coef = to_string(exp * _coef);
+               // Change term
                new_term = "x^" + to_string(--exp);
-               std::cout << "NEW TERM: " << new_term << std::endl;
                m = new Monomial(new_coef + new_term);
-               // Change Exponent
-               //exp -= 1;
-               //m->setTerm("x^" + to_string(exp));
-               m->setValidMono(true);
             }
          }
       }

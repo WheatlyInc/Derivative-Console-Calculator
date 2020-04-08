@@ -34,9 +34,10 @@ Monomial::Monomial(string s)
 	}
 	if (isdigit(s[0])) {
 		int i(1);
-		for (i; i < s.size() && isdigit(s[i]); i++) {
+		for (i; i < s.size() && (isdigit(s[i]) || s[i] == '.'); i++) {
 			str_coef += s[i];
 		}
+		omitTrailZeros(str_coef);
 		m_coefficient = stod(str_coef);
 		if (s[i] == 'x') {
 			m_term += 'x';
@@ -46,29 +47,28 @@ Monomial::Monomial(string s)
 				int exp_Oper_Index(i);
 				++i;
 				if (i < s.size() && isdigit(s[i])) {
-					if (s[i] == '1') {
+					bool exp_index_still_num = true;
+					for (i; i < s.size() && (isdigit(s[i]) || s[i] == '.'); i++) {
+						m_term += s[i];
+					}
+					omitTrailZeros(m_term);
+					if (s.substr(exp_Oper_Index + 1, i - 1) == "1") {
 						m_term.pop_back();
-						i++;
-						if (i == s.size())
+						m_term.pop_back();
+						if (++i == s.size())
 							m_valid_mono = true;
 						else
 							m_valid_mono = false;
 					}
+					if (s.substr(exp_Oper_Index + 1, i - 1) == "0") {
+						m_term = "";
+						m_valid_mono = true; 
+					}
+					else if (isNum(s.substr(exp_Oper_Index + 1, i - 1))) {
+						m_valid_mono = true;
+					}
 					else {
-						bool exp_index_still_num = true;
-						for (i; i < s.size() && isdigit(s[i]); i++) {
-							m_term += s[i];
-						}
-						if (s.substr(exp_Oper_Index + 1, i - 1) == "0") {
-							m_term = "";
-							m_valid_mono = true; 
-						}
-						else if (isNum(s.substr(exp_Oper_Index + 1, i - 1))) {
-							m_valid_mono = true;
-						}
-						else {
-							m_valid_mono = false;
-						}
+						m_valid_mono = false;
 					}
 				}
 				

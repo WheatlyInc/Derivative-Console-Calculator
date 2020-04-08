@@ -25,5 +25,6 @@ namespace {
 		Derivative d(p);
 		oss << d;
 		EXPECT_EQ("6x^2", oss.str());
+		EXPECT_TRUE(d.getValid());
 	}
 }
