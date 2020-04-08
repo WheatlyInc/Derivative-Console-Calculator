@@ -29,9 +29,11 @@ Derivative::Derivative(const Polynomial& poly)
 Monomial deriveMonomial(const Monomial& mono)
 {
    int exp(0);
-   Monomial *m = new Monomial();
+   Monomial *m = nullptr;
    double _coef = mono.getCoef();
    string _term = mono.getTerm();
+   string new_coef; 
+   string new_term;
 
    /* Parsing _term */
    for (int k(0); k < _term.size(); k++) {
@@ -46,10 +48,14 @@ Monomial deriveMonomial(const Monomial& mono)
                for (k; k < _term.size() && isdigit(_term[k]); k++)
                   str_exponent += _term[k];
                exp = stod(str_exponent);
-               m->setCoef(exp * _coef);
+               //m->setCoef(exp * _coef);
+               new_coef = to_string(exp * _coef);
+               new_term = "x^" + to_string(--exp);
+               std::cout << "NEW TERM: " << new_term << std::endl;
+               m = new Monomial(new_coef + new_term);
                // Change Exponent
-               exp -= 1;
-               m->setTerm("x^" + to_string(exp));
+               //exp -= 1;
+               //m->setTerm("x^" + to_string(exp));
                m->setValidMono(true);
             }
          }

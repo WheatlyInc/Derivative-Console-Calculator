@@ -25,7 +25,13 @@ Monomial::Monomial(string s)
 	m_coefficient = 0;
 	m_term = "";
 	m_valid_mono = false;
-	string str_coef; str_coef += (s[0]);
+	string str_coef; 
+	if (!s.empty())
+		str_coef += (s[0]);
+	else {
+		std::cerr << "Error: Monomial not defined: Empty string passed in.\n";
+		return;
+	}
 	if (isdigit(s[0])) {
 		int i(1);
 		for (i; i < s.size() && isdigit(s[i]); i++) {
@@ -40,19 +46,29 @@ Monomial::Monomial(string s)
 				int exp_Oper_Index(i);
 				++i;
 				if (i < s.size() && isdigit(s[i])) {
-					bool exp_index_still_num = true;
-					for (i; i < s.size() && isdigit(s[i]); i++) {
-						m_term += s[i];
-					}
-					if (s.substr(exp_Oper_Index + 1, i - 1) == "0") {
-						m_term = "";
-						m_valid_mono = true; 
-					}
-					else if (isNum(s.substr(exp_Oper_Index + 1, i - 1))) {
-						m_valid_mono = true;
+					if (s[i] == '1') {
+						m_term.pop_back();
+						i++;
+						if (i == s.size())
+							m_valid_mono = true;
+						else
+							m_valid_mono = false;
 					}
 					else {
-						m_valid_mono = false;
+						bool exp_index_still_num = true;
+						for (i; i < s.size() && isdigit(s[i]); i++) {
+							m_term += s[i];
+						}
+						if (s.substr(exp_Oper_Index + 1, i - 1) == "0") {
+							m_term = "";
+							m_valid_mono = true; 
+						}
+						else if (isNum(s.substr(exp_Oper_Index + 1, i - 1))) {
+							m_valid_mono = true;
+						}
+						else {
+							m_valid_mono = false;
+						}
 					}
 				}
 				
@@ -151,10 +167,18 @@ bool Monomial::operator!=(const Monomial m) const
  **/
 ostream& operator<<(ostream& os, const Monomial& mono)
 {
-	if (mono.getTerm() == "")
-		return os << mono.getCoef();
-	else
-		return os << mono.getCoef() << mono.getTerm();
+	if (mono.getCoef() == 1) {
+		if (mono.getTerm() == "")
+			return os << '1';
+		else
+			return os << mono.getTerm();
+	}
+	else {
+		if (mono.getTerm() == "")
+			return os << mono.getCoef();
+		else
+			return os << mono.getCoef() << mono.getTerm();
+	}
 }
 
 /**

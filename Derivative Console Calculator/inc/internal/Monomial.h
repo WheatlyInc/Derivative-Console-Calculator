@@ -24,26 +24,16 @@ using std::stringstream;
 using std::to_string;
 
 
-enum arithmetic_op {
-	plus=0,
-	minus,
-	times,
-	divide,
-};
+static const char plus = '+';
+static const char minus = '-';
+static const char times = '*';
+static const char divide = '/';
+static const char lft_parenth = '(';
+static const char rht_parenth = ')';
+static const char exponent = '^';
+static const char log_10[] = "log(";
+static const char natural_log[] = "ln(";
 
-enum quantity {
-	lft_parenth,
-	rht_parenth,
-};
-
-enum exponent {
-	exponent,
-};
-
-enum funcs {
-	log_10,
-	natural_log,
-};
 
 /**
 * This class is a coding representation of a mathematical monomial. An example: 2x 

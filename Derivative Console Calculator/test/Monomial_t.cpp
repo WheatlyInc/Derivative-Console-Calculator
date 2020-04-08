@@ -46,6 +46,17 @@ namespace {
 		EXPECT_TRUE(m.getValidMono());
 	}
 
+	/* Simpilying an exponent of 1. Useful for Derivatives of functions like x^2 */
+	TEST(monomialSimplify, oneExp) {
+		Monomial m("2x^1");
+		stringstream oss;
+		oss << m;
+		EXPECT_EQ(m.getCoef(), 2);
+		EXPECT_EQ(m.getTerm(), "x");
+		EXPECT_EQ(oss.str(), "2x");
+		EXPECT_TRUE(m.getValidMono());
+	}
+
 	/* f(x) == f(x) where f(x) = x */
 	TEST(monomialsCompare, mEqualsm) {
 		Monomial m("x");
