@@ -42,8 +42,8 @@ class Polynomial
         friend istream& operator>>(istream& is, Polynomial&);
 
     protected:
-		 bool m_valid;
-       vector<Monomial> m_polyn;
+        bool m_valid;
+        vector<Monomial> m_polyn;
 		 // Another vector to keep track of operators +-*/ ? 
 
 };

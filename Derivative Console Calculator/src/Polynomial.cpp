@@ -104,8 +104,8 @@ ostream& operator<<(ostream& os, const Polynomial& poly)
 
 /** 
  * TOBE DEPRECATED OR REDONE
-  * Pre:
- *		Takes in a string
+ * Pre:
+ *		Takes in a string to build one or more monomials into a storable mathematical expression.
  * Post:
  *		Will attempt to build a valid polynomial. Will eventually print appropiate error messages.
 **/
