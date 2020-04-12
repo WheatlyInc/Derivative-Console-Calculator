@@ -52,7 +52,7 @@ Monomial::Monomial(string s)
 						m_term += s[i];
 					}
 					omitTrailZeros(m_term);
-					if (s.substr(exp_Oper_Index + 1, i - 1) == "1") {
+					if (s.substr(exp_Oper_Index + 1, 1) == "1") {
 						m_term = m_term.substr(0, exp_Oper_Index - 1);
 						if (++i == s.size())
 							m_valid_mono = true;

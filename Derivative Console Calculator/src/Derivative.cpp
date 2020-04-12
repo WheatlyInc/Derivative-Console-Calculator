@@ -56,7 +56,7 @@ Monomial deriveMonomial(const Monomial& mono)
          }
       }
    }
-   if (*m == nullptr)
+   if (m == nullptr)
        m = new Monomial();
    return *m;
 }
