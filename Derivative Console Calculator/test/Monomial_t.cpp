@@ -71,4 +71,4 @@ namespace {
 		EXPECT_EQ(oss.str(), "2x^3");
 	};
 
-} // namespace
+} // end namespace
