@@ -41,6 +41,7 @@ namespace {
 		EXPECT_TRUE(m.getValidMono());
 	};
 
+
 	/* Omitting unnecesary exponent 0 on a simple monomial */
 	TEST(monomialSimplify, zeroExp) {
 		Monomial m("2x^0");
@@ -85,39 +86,40 @@ namespace {
 		EXPECT_TRUE(m.getValidMono());
 	};
 
+
 	/* f(x) == f(x) where f(x) = x */
-	TEST(monomialsCompare, mEqualsm) {
+	TEST(monomialsCompare, m_Equal_m) {
 		Monomial m("x");
 		EXPECT_TRUE(m == m);
 	};
 
 	/* 2x^3 == 3x^2 should be false */
-	TEST(monomialsCompare, TWOxExp3_notEq_ThreeExp2) {
+	TEST(monomialsCompare, TWOxExp3_Equal_ThreeExp2) {
 		Monomial m1("2x^3"), m2("3x^2");
 		EXPECT_FALSE(m1 == m2);
 	};
 
 	/* An empty monomial should not equal a nonempty monomial */
-	TEST(monomialsCompare, empty_notEq_TWOxExp3) {
+	TEST(monomialsCompare, empty_Equal_TWOxExp3) {
 		Monomial m1, m2("2x^3");
 		EXPECT_FALSE(m1 == m2);
 	};
 
-	/* Retesting the previous 3 tests, but using the != operator overloader */
+	/*** Retesting the previous 3 monomialsCompare tests, but using the != operator overloader ***/
 	/* f(x) == f(x) where f(x) = x */
-	TEST(monomialsCompare_usingNotEqual, mEqualsm) {
+	TEST(monomialsCompare, m_NotEq_m) {
 		Monomial m("x");
 		EXPECT_FALSE(m != m);
 	};
 
 	/* 2x^3 == 3x^2 should be false */
-	TEST(monomialsCompare_usingNotEqual, TWOxExp3_notEq_ThreeExp2) {
+	TEST(monomialsCompare, TWOxExp3_NotEq_ThreeExp2) {
 		Monomial m1("2x^3"), m2("3x^2");
 		EXPECT_TRUE(m1 != m2);
 	};
 
 	/* An empty monomial should not equal a nonempty monomial */
-	TEST(monomialsCompare_usingNotEqual, empty_notEq_TWOxExp3) {
+	TEST(monomialsCompare, empty_NotEq_TWOxExp3) {
 		Monomial m1, m2("2x^3");
 		EXPECT_TRUE(m1 != m2);
 	};
