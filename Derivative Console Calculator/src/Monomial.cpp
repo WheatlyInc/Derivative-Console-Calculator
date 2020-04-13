@@ -26,13 +26,11 @@ Monomial::Monomial(string s)
 	m_term = "";
 	m_valid_mono = false;
 	string str_coef; 
-	if (!s.empty())
-		str_coef += (s[0]);
-	else {
+	if (s.empty()) {
 		std::cerr << "Error: Monomial not defined: Empty string passed in.\n";
 		return;
 	}
-	int i(1);
+	int i(0);
 	if (isdigit(s[0])) {
 		for (i; i < s.size() && (isdigit(s[i]) || s[i] == '.'); i++) {
 			str_coef += s[i];
@@ -44,26 +42,30 @@ Monomial::Monomial(string s)
 			++i;
 			if (s[i] == '^' && i < s.size()) {
 				m_term += '^';
-				int exp_Oper_Index(i);
+				int exp_Oper_Index(m_term.size() - 1);
 				++i;
 				if (i < s.size() && isdigit(s[i])) {
 					bool exp_index_still_num = true;
+					// This copies the str_number that represents the exponent
+					string exp_str;
 					for (i; i < s.size() && (isdigit(s[i]) || s[i] == '.'); i++) {
-						m_term += s[i];
+						exp_str += s[i];
 					}
-					omitTrailZeros(m_term);
-					if (s.substr(exp_Oper_Index + 1, 1) == "1") {
+					omitTrailZeros(exp_str);
+
+					m_term += exp_str; 
+					if (exp_str == "1") {
 						m_term = "x";
 						if (++i == s.size())
 							m_valid_mono = true;
 						else
 							m_valid_mono = false;
 					}
-					if (s.substr(exp_Oper_Index + 1, i - 1) == "0") {
+					if (exp_str == "0") {
 						m_term = "";
 						m_valid_mono = true; 
 					}
-					else if (isNum(s.substr(exp_Oper_Index + 1, i - 1))) {
+					else if (isNum(exp_str)) {
 						m_valid_mono = true;
 					}
 					else {
@@ -97,10 +99,15 @@ void Monomial::setValidMono(bool b)
 /**
  * Pre:
  *		Used by the Monomial Class to remove trailing zeros from an input string. 
- *		Expects ONLY a double in the form of a string.
+ *		Expects ONLY one "double" in the form of a string. The "double" may or may not have a decimal value.
+ * Post: 
+ *		Will remove every zero that follows a period. If there is no period, the function makes no changes.
 **/
 void Monomial::omitTrailZeros(string& str_Num)
 {
+	auto found = str_Num.find(".");
+	if (found == string::npos)
+		return;
 	str_Num.erase(str_Num.find_last_not_of('0') + 1, std::string::npos);
 	if (str_Num[str_Num.size() - 1] == '.')
 		str_Num.pop_back();
@@ -164,18 +171,25 @@ bool Monomial::operator!=(const Monomial m) const
  **/
 ostream& operator<<(ostream& os, const Monomial& mono)
 {
-	if (mono.getCoef() == 1) {
-		if (mono.getTerm() == "")
-			return os << '1';
-		else
-			return os << mono.getTerm();
+
+	if (mono.getValidMono()) {
+		if (mono.getCoef() == 1) {
+			if (mono.getTerm() == "")
+				return os << '1';
+			else
+				return os << mono.getTerm();
+		}
+		else {
+			if (mono.getTerm() == "")
+				return os << mono.getCoef();
+			else
+				return os << mono.getCoef() << mono.getTerm();
+		}
 	}
 	else {
-		if (mono.getTerm() == "")
-			return os << mono.getCoef();
-		else
-			return os << mono.getCoef() << mono.getTerm();
+		return os << "ERROR: Invalid Monomial\n";
 	}
+
 }
 
 /**

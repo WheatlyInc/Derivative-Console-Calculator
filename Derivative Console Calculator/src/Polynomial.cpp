@@ -91,7 +91,6 @@ bool Polynomial::operator!=(const Polynomial other_p) const
 **/
 ostream& operator<<(ostream& os, const Polynomial& poly)
 {
-	std::cout << "ostream function called " << std::endl;
 	if (poly.m_valid == true) {
 		for (int i(0); i < poly.getSize(); i++) {
 			os << poly[i];

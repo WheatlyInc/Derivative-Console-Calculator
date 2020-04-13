@@ -22,16 +22,22 @@ namespace {
 	/* f(x) = 2x*/
 	TEST(monomialsConstruct, TWOx) {
 		Monomial m("2x");
+		stringstream oss;
+		oss << m;
 		EXPECT_EQ(m.getCoef(), 2);
 		EXPECT_EQ(m.getTerm(), "x");
+		EXPECT_EQ(oss.str(), "2x");
 		EXPECT_TRUE(m.getValidMono());
 	};
 
 	/* f(x) = 2x^3*/
 	TEST(monomialsConstruct, TWOxEXP3) {
 		Monomial m("2x^3");
+		stringstream oss;
+		oss << m;
 		EXPECT_EQ(m.getCoef(), 2);
 		EXPECT_EQ(m.getTerm(), "x^3");
+		EXPECT_EQ(oss.str(), "2x^3");
 		EXPECT_TRUE(m.getValidMono());
 	};
 
