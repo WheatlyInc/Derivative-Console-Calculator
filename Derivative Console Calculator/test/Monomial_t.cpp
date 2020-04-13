@@ -91,6 +91,38 @@ namespace {
 		EXPECT_TRUE(m == m);
 	};
 
+	/* 2x^3 == 3x^2 should be false */
+	TEST(monomialsCompare, TWOxExp3_notEq_ThreeExp2) {
+		Monomial m1("2x^3"), m2("3x^2");
+		EXPECT_FALSE(m1 == m2);
+	};
+
+	/* An empty monomial should not equal a nonempty monomial */
+	TEST(monomialsCompare, empty_notEq_TWOxExp3) {
+		Monomial m1, m2("2x^3");
+		EXPECT_FALSE(m1 == m2);
+	};
+
+	/* Retesting the previous 3 tests, but using the != operator overloader */
+	/* f(x) == f(x) where f(x) = x */
+	TEST(monomialsCompare_usingNotEqual, mEqualsm) {
+		Monomial m("x");
+		EXPECT_FALSE(m != m);
+	};
+
+	/* 2x^3 == 3x^2 should be false */
+	TEST(monomialsCompare_usingNotEqual, TWOxExp3_notEq_ThreeExp2) {
+		Monomial m1("2x^3"), m2("3x^2");
+		EXPECT_TRUE(m1 != m2);
+	};
+
+	/* An empty monomial should not equal a nonempty monomial */
+	TEST(monomialsCompare_usingNotEqual, empty_notEq_TWOxExp3) {
+		Monomial m1, m2("2x^3");
+		EXPECT_TRUE(m1 != m2);
+	};
+	
+
 	/* Outputting Monomial */
 	TEST(monomialOutput, TwoxEXP3) {
 		Monomial m("2x^3");
