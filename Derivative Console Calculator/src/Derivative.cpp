@@ -14,7 +14,11 @@ Derivative::Derivative(const Polynomial& poly)
       return;
    }
    for (int i(0); i < poly.getSize(); i++) {
-      m_polyn.push_back(deriveMonomial(poly[i]));
+      m_polyn.push_back(move(deriveMonomial(poly[i])));
+      if (!poly[i].getValidMono()) {
+          m_valid = false;
+          return;
+      }
    }
    m_valid = true;
 }
@@ -24,14 +28,16 @@ Derivative::Derivative(const Polynomial& poly)
  *		Requires a valid monomial
  * Post:
  *		Will produce the derived form of the inputed monomial. Will call several check functions
- *    to determine how to solve certain problems.
+ *      to determine how to solve certain problems.
 **/
 Monomial deriveMonomial(const Monomial& mono)
 {
-   int exp(0);
-   Monomial *m = new Monomial();
+   double exp(0);
+   Monomial *m = nullptr;
    double _coef = mono.getCoef();
    string _term = mono.getTerm();
+   string new_coef; 
+   string new_term;
 
    /* Parsing _term */
    for (int k(0); k < _term.size(); k++) {
@@ -46,14 +52,18 @@ Monomial deriveMonomial(const Monomial& mono)
                for (k; k < _term.size() && isdigit(_term[k]); k++)
                   str_exponent += _term[k];
                exp = stod(str_exponent);
-               m->setCoef(exp * _coef);
-               // Change Exponent
-               exp -= 1;
-               m->setTerm("x^" + to_string(exp));
-               m->setValidMono(true);
+               new_coef = to_string(exp * _coef);
+               // Change term
+               new_term = "x^" + to_string(--exp);
+               m = new Monomial(new_coef + new_term);
             }
          }
       }
    }
+   if (m == nullptr) {
+       std::cout << "nullptr was called" << std::endl;
+       m = new Monomial();
+   }
+       
    return *m;
 }

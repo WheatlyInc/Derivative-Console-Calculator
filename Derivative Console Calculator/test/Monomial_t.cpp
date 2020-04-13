@@ -22,15 +22,67 @@ namespace {
 	/* f(x) = 2x*/
 	TEST(monomialsConstruct, TWOx) {
 		Monomial m("2x");
+		stringstream oss;
+		oss << m;
 		EXPECT_EQ(m.getCoef(), 2);
 		EXPECT_EQ(m.getTerm(), "x");
+		EXPECT_EQ(oss.str(), "2x");
+		EXPECT_TRUE(m.getValidMono());
 	};
 
 	/* f(x) = 2x^3*/
 	TEST(monomialsConstruct, TWOxEXP3) {
 		Monomial m("2x^3");
+		stringstream oss;
+		oss << m;
 		EXPECT_EQ(m.getCoef(), 2);
 		EXPECT_EQ(m.getTerm(), "x^3");
+		EXPECT_EQ(oss.str(), "2x^3");
+		EXPECT_TRUE(m.getValidMono());
+	};
+
+	/* Omitting unnecesary exponent 0 on a simple monomial */
+	TEST(monomialSimplify, zeroExp) {
+		Monomial m("2x^0");
+		stringstream oss;
+		oss << m;
+		EXPECT_EQ(m.getCoef(), 2);
+		EXPECT_EQ(m.getTerm(), "");
+		EXPECT_EQ(oss.str(), "2");
+		EXPECT_TRUE(m.getValidMono());
+	}
+
+	/* Simplifying an exponent of 1. Useful for Derivatives of functions like x^2 */
+	TEST(monomialSimplify, oneExp) {
+		Monomial m("2x^1");
+		stringstream oss;
+		oss << m;
+		EXPECT_EQ(m.getCoef(), 2);
+		EXPECT_EQ(m.getTerm(), "x");
+		EXPECT_EQ(oss.str(), "2x");
+		EXPECT_TRUE(m.getValidMono());
+	}
+
+	/* Simplifying an coefficient */
+	TEST(monomialSimplify, oneCoefwithTerm) {
+		Monomial m("1x^2");
+		stringstream oss;
+		oss << m;
+		EXPECT_EQ(m.getCoef(), 1);
+		EXPECT_EQ(m.getTerm(), "x^2");
+		EXPECT_EQ(oss.str(), "x^2");
+		EXPECT_TRUE(m.getValidMono());
+	}
+
+	/* Simplifying an coeficient of 1 and a variable of exponent of 1. */
+	TEST(monomialSimplify, oneCoefoneExp) {
+		Monomial m("1x^1");
+		stringstream oss;
+		oss << m;
+		EXPECT_EQ(m.getCoef(), 1);
+		EXPECT_EQ(m.getTerm(), "x");
+		EXPECT_EQ(oss.str(), "x");
+		EXPECT_TRUE(m.getValidMono());
 	};
 
 	/* f(x) == f(x) where f(x) = x */
@@ -39,4 +91,12 @@ namespace {
 		EXPECT_TRUE(m == m);
 	};
 
-} // namespace
+	/* Outputting Monomial */
+	TEST(monomialOutput, TwoxEXP3) {
+		Monomial m("2x^3");
+		stringstream oss;
+		oss << m;
+		EXPECT_EQ(oss.str(), "2x^3");
+	};
+
+} // end namespace

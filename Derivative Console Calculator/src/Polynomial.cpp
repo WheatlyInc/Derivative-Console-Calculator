@@ -91,16 +91,21 @@ bool Polynomial::operator!=(const Polynomial other_p) const
 **/
 ostream& operator<<(ostream& os, const Polynomial& poly)
 {
-	if (poly.m_valid == true)
-		return os << poly[0].getCoef() << poly[0].getTerm();
+	if (poly.m_valid == true) {
+		for (int i(0); i < poly.getSize(); i++) {
+			os << poly[i];
+		}
+		return os;
+	}
 	else 
 		return os << "ERROR: Invalid Polnomial entered.\n";
+	
 }
 
 /** 
  * TOBE DEPRECATED OR REDONE
-  * Pre:
- *		Takes in a string
+ * Pre:
+ *		Takes in a string to build one or more monomials into a storable mathematical expression.
  * Post:
  *		Will attempt to build a valid polynomial. Will eventually print appropiate error messages.
 **/
@@ -118,7 +123,7 @@ istream& operator>>(istream& is, Polynomial& poly)
 	is >> s;
 	if (isdigit(s[0]) || s[0] == 'x') {
 		Monomial m1(s);
-		poly.m_polyn.push_back(m1);
+		poly.m_polyn.push_back(move(m1));
 		if (m1.getValidMono())
 			poly.m_valid = true;
 	}

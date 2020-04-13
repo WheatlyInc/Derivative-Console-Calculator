@@ -21,41 +21,43 @@ using std::endl;
 
 int main()
 {
-   string s;
-   cout << "Welcome to the Derivative Console Calculator!\n\n"
-        << "Please enter a number in the form of a monomial or polynomial to find the derivative\n"
-        << "(Use a single letter only as your variable only. Inputing Logs, simplifying like-terms not supported currently)\n"
-        << "Constants and the rest of the term of a monomial is supported, but constant goes first. For example:\n"
-        << "\t2x\n"
-        << "\t3x^2\n"
-        << "\tx^2\n"
-        << "are all valid monomials for input. \n\nHowever:\n"
-		  << "\tx2\n"
-		  << "is not.\n";
-	cout << "Enter your problem into the function statement below: ";
+    string s;
+    cout << "Welcome to the Derivative Console Calculator!\n\n"
+         << "Please enter a number in the form of a monomial to find the derivative\n"
+         << "Follow general mathematical rules when inputing problems.\n"
+         << "(Use a single letter (x) as your variable only. Inputing polynomials, logs, simplifying like-terms not supported currently)\n"
+         << "Constants and the rest of the term of a monomial is supported, but the constant goes first. For example:\n"
+         << "\t2x\n"
+         << "\t3x^2\n"
+         << "\tx^2\n"
+         << "are all valid monomials for input. \n\nHowever:\n"
+		    << "\tx2\n"
+		 << "is not.\n\n";
+    cout << "Enter your problem into the function statement below: ";
+    cout << endl;
 
-   while (cin)
-   {
-      cout << endl << "f(x) = ";
-		Polynomial p;
-      cin >> s;
-      stringstream iss(s);
-      iss >> p;
-      if (p.getValid()) {
-         Derivative d(p);
-         if (d.getValid()) {
-            cout << "The derivative of " << p << " is : \n" << d << endl;
-         }
-         else {
+    while (cin)
+    {
+        cout << "\nf(x) = ";
+        Polynomial p;
+        cin >> s;
+        stringstream iss(s);
+        iss >> p;
+        if (p.getValid()) {
+            Derivative d(p);
+            if (d.getValid()) {
+            cout << "The derivative of " << p << " is :" << endl << d << endl;
+            }
+            else {
             std::cerr << "Couldn't find derivative: " << endl;
-         }
-      }
-      else {
-         cout << "A problem was found with your input:\n";
-      }
+            }
+        }
+        else {
+            cout << "Please try again\n";
+        }
       
-   }
-   return 0;
+    }
+    return 0;
 }
 
 
