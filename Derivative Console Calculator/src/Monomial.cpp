@@ -32,8 +32,8 @@ Monomial::Monomial(string s)
 		std::cerr << "Error: Monomial not defined: Empty string passed in.\n";
 		return;
 	}
+	int i(1);
 	if (isdigit(s[0])) {
-		int i(1);
 		for (i; i < s.size() && (isdigit(s[i]) || s[i] == '.'); i++) {
 			str_coef += s[i];
 		}
@@ -53,7 +53,7 @@ Monomial::Monomial(string s)
 					}
 					omitTrailZeros(m_term);
 					if (s.substr(exp_Oper_Index + 1, 1) == "1") {
-						m_term = m_term.substr(0, exp_Oper_Index - 1);
+						m_term = "x";
 						std::cout << "Hmm: " << m_term << std::endl;
 						if (++i == s.size())
 							m_valid_mono = true;

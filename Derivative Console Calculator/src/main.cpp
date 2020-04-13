@@ -38,7 +38,7 @@ int main()
 
     while (cin)
     {
-        cout << "f(x) = ";
+        cout << "\nf(x) = ";
         Polynomial p;
         cin >> s;
         stringstream iss(s);
