@@ -167,7 +167,7 @@ bool Monomial::operator!=(const Monomial m) const
 /**
  * TOBE IMPLEMENTED
  *	Pre:
- * Pro:
+ *  Pro:
  **/
 ostream& operator<<(ostream& os, const Monomial& mono)
 {

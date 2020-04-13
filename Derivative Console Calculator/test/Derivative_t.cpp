@@ -26,4 +26,13 @@ namespace {
 		EXPECT_EQ("6x^2", oss.str());
 		EXPECT_TRUE(d.getValid());
 	}
+	
+	TEST(constructDerivative, multiDigtCoefAndExponent) {
+		Polynomial p("20x^30");
+		Derivative d(p);
+		stringstream oss;
+		oss << d;
+		EXPECT_EQ(oss.str(), "600x^29");
+		EXPECT_TRUE(d.getValid());
+	}
 }
