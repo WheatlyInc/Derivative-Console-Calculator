@@ -15,6 +15,10 @@ Derivative::Derivative(const Polynomial& poly)
    }
    for (int i(0); i < poly.getSize(); i++) {
       m_polyn.push_back(move(deriveMonomial(poly[i])));
+      if (!poly[i].getValidMono()) {
+          m_valid = false;
+          return;
+      }
    }
    m_valid = true;
 }

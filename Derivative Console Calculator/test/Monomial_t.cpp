@@ -57,6 +57,17 @@ namespace {
 		EXPECT_TRUE(m.getValidMono());
 	}
 
+	/* Simplifying an coeficient of 1 and a variable of exponent of 1. */
+	TEST(monomialSimplify, oneCoefoneExp) {
+		Monomial m("1x^1");
+		stringstream oss;
+		oss << m;
+		EXPECT_EQ(m.getCoef(), 1);
+		EXPECT_EQ(m.getTerm(), "x");
+		EXPECT_EQ(oss.str(), "x");
+		EXPECT_TRUE(m.getValidMono());
+	};
+
 	/* f(x) == f(x) where f(x) = x */
 	TEST(monomialsCompare, mEqualsm) {
 		Monomial m("x");
