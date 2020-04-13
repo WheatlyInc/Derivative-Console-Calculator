@@ -19,10 +19,9 @@ namespace {
 
 	/* dx/x (f(x) = 2x^3)  == 6x^2  */
 	TEST(constructDerivative, Non1CoefAndExponent) {
-		Polynomial p;
-		stringstream iss("2x^3"), oss;
-		iss >> p;
+		Polynomial p("2x^3");
 		Derivative d(p);
+		stringstream oss;
 		oss << d;
 		EXPECT_EQ("6x^2", oss.str());
 		EXPECT_TRUE(d.getValid());

@@ -12,6 +12,43 @@ Polynomial::Polynomial()
 	m_valid = false;
 }
 
+/**
+ *	Pre:
+ *		Takes in a string to build one or more monomials into a storable mathematical expression.
+ *	Post :
+ *		Will attempt to build a valid polynomial.Will eventually print appropiate error messages.
+**/
+Polynomial::Polynomial(const string& s)
+{
+	m_valid = false;
+	int num_lft_parenth(0), num_rht_parenth(0);
+	bool open_parenth(false);
+	/* Monomials must have either a coefficient, some function of x, or both.
+		They must be distinct and cannot blend with other monomials.	**/
+
+		// Building the first monomial // 
+		/* Analyze the first character to be valid.*/
+	if (isdigit(s[0]) || s[0] == 'x') {
+		Monomial m1(s);
+		if (m1.getValidMono())
+			m_valid = true;
+		else {
+			std::cerr << "Polynomial could not be formed because of invalid monomial.\n";
+			return;
+		}
+		m_polyn.push_back(move(m1));
+	}
+	else {
+		m_valid = false;
+		std::cerr << "ERROR: Invalid startpoint to input expression: \"" << s[0] << "\"" << std::endl;
+		return;
+	}
+
+
+
+	//while (is >> s && poly.m_valid != false) {}
+}
+
 vector<Monomial> Polynomial::getPolyn() const
 {
    return m_polyn;
@@ -60,7 +97,7 @@ bool Polynomial::getValid() const
 const Monomial& Polynomial::operator[](const unsigned int index) const
 {
 	if (index >= m_polyn.size()) {
-		std::cerr << "Error: Polynomial Index out of bound.";
+		std::cerr << "Error: Polynomial Index out of bound: index " << index << " >= " << m_polyn.size() << std::endl;
 	}
 	return m_polyn[index];
 }
@@ -103,38 +140,8 @@ ostream& operator<<(ostream& os, const Polynomial& poly)
 }
 
 /** 
- * TOBE DEPRECATED OR REDONE
- * Pre:
- *		Takes in a string to build one or more monomials into a storable mathematical expression.
- * Post:
- *		Will attempt to build a valid polynomial. Will eventually print appropiate error messages.
-**/
+ * DEPRECATED
+ *
 istream& operator>>(istream& is, Polynomial& poly)
-{
-	Monomial m1;
-	int num_lft_parenth(0), num_rht_parenth(0);
-	bool open_parenth(false); 
-	string s; 
-	/* Monomials must have either a coefficient, some function of x, or both.
-	 	They must be distinct and cannot blend with other monomials.	**/
-	
-	// Building the first monomial // 
-	/* Analyze the first character to be valid.*/
-	is >> s;
-	if (isdigit(s[0]) || s[0] == 'x') {
-		Monomial m1(s);
-		poly.m_polyn.push_back(move(m1));
-		if (m1.getValidMono())
-			poly.m_valid = true;
-	}
-	else {
-		poly.m_valid = false;
-		std::cerr << "ERROR: Invalid startpoint to input expression: \"" << s[0] << "\"" <<  std::endl;
-		return is;
-	}
-
-
-	
-	while (is >> s && poly.m_valid != false) {}
-	return is;
-}
+{ }
+*/

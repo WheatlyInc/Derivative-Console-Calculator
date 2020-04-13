@@ -20,7 +20,7 @@ Monomial::Monomial()
  *		Translates the input into an organized, readable object if validated 
  *		successfully.
  **/
-Monomial::Monomial(string s)
+Monomial::Monomial(const string& s)
 {
 	m_coefficient = 0;
 	m_term = "";
@@ -129,7 +129,7 @@ string Monomial::getTerm() const
  * Post:
  *		Will return true if s is some number in string format, false otherwise
 **/
-bool Monomial::isNum(const string s) const
+bool Monomial::isNum(const string& s) const
 {
 	bool b = true;
 	for (int i(0); i < s.size() && b; i++)

@@ -30,6 +30,7 @@ class Polynomial
 {
    public:
         Polynomial();
+        Polynomial(const string&);
         vector<Monomial> getPolyn() const;
         int getSize() const;
         void combineliketerms();
@@ -39,7 +40,7 @@ class Polynomial
         bool operator==(const Polynomial) const;
         bool operator!=(const Polynomial other_p) const;
         friend ostream& operator<<(ostream& os, const Polynomial&);
-        friend istream& operator>>(istream& is, Polynomial&);
+        //friend istream& operator>>(istream& is, Polynomial&);
 
     protected:
         bool m_valid;
