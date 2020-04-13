@@ -54,7 +54,6 @@ Monomial::Monomial(string s)
 					omitTrailZeros(m_term);
 					if (s.substr(exp_Oper_Index + 1, 1) == "1") {
 						m_term = "x";
-						std::cout << "Hmm: " << m_term << std::endl;
 						if (++i == s.size())
 							m_valid_mono = true;
 						else
