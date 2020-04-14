@@ -117,6 +117,9 @@ void Monomial::parseBuildTerm(const string& s, int& i)
 		m_term = _term;
 		m_valid_mono = true;
 	}
+	else {
+		throw "Ambiguous term after 'x': In " + s + '\n';
+	}
 }
 
 /**

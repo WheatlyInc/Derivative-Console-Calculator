@@ -12,36 +12,31 @@
 
 #include <fstream>
 #include <iostream>
-#include <sstream>
 #include "../inc/internal/Derivative.h"
-#include <experimental/filesystem>
-namespace fs = std::experimental::filesystem;
 
 using std::cin;
 using std::cout;
 using std::endl;
 
 
-int main()
+int main() 
 {
-    std::cout << "Current path is " << fs::current_path() << '\n';
-
     string title;
-    std::ifstream titleFile;
-    titleFile.open("title.txt");
-    title.assign(std::istreambuf_iterator<char>(titleFile), std::istreambuf_iterator<char>()); // read titleFile
-    if (titleFile)
-        cout << "EXISTS!";
-    else
-        cout << "NOEXIST!";
+    title="______          _            _   _             _____                       _        _____       _            _       _\n" 
+          "|  _  \\        (_)          | | (_)           /  __ \\                     | |      /  __ \\     | |          | |     | |            \n" 
+          "| | | |___ _ __ ___   ____ _| |_ ___   _____  | /  \\/ ___  _ __  ___  ___ | | ___  | /  \\/ __ _| | ___ _   _| | __ _| |_ ___  _ __\n" 
+          "| | | / _ \\ '__| \\ \\ / / _` | __| \\ \\ / / _ \\ | |    / _ \\| '_ \\/ __|/ _ \\| |/ _ \\ | |    / _` | |/ __| | | | |/ _` | __/ _ \\| '__|\n" 
+          "| |/ /  __/ |  | |\\ V / (_| | |_| |\\ V /  __/ | \\__/\\ (_) | | | \\__ \\ (_) | |  __/ | \\__/\\ (_| | | (__| |_| | | (_| | || (_) | |\n" 
+          "|___/ \\___|_|  |_| \\_/ \\__,_|\\__|_| \\_/ \\___|  \\____/\\___/|_| |_|___/\\___/|_|\\___|  \\____/\\__,_|_|\\___|\\__,_|_|\\__,_|\\__\\___/|_|\n";
     cout << title << endl;
 
     cout << "Welcome to the Derivative Console Calculator!\n\n"
          << "Please enter a number in the form of a monomial to find the derivative\n"
          << "Follow general mathematical rules when inputing problems.\n"
          << "   ==> Use a single letter (x) as your variable only.\n"
-         << "       (Inputing polynomials, logs, functions with 'e'simplifying like-terms not supported currently)\n"
-         << "Constants and the rest of the term of a monomial is supported, but the constant goes first. For example:\n"
+         << "       (Inputing polynomials, logs, functions with 'e', and simplifying like-terms are not supported currently)\n"
+         << "Constants and the rest of the term of a monomial is supported, but the constant goes first.\n"
+         << "For example:\n"
          << "\t2x\n"
          << "\t3x^2\n"
          << "\tx^2\n"

@@ -15,6 +15,9 @@ if(EXISTS "${LOC_PATH}")
     message(FATAL_ERROR "You cannot build in a source directory (or any directory with a CMakeLists.txt file). Please make a build subdirectory. Feel free to remove CMakeCache.txt and CMakeFiles.")
 endif()
 
+message(${CMAKE_CXX_COMPILER_ID})
+message(${CMAKE_CXX_COMPILER_VERSION})
+
 #include_directories(cmake)
 
 ### This will download googletest as a submodule to the extern folder in the project, if it hasn't already, and verify it exists
