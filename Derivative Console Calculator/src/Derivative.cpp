@@ -60,7 +60,7 @@ Monomial deriveMonomial(const Monomial& mono)
       }
    }
    if (m == nullptr) {
-       std::cout << "nullptr was called" << std::endl;
+       std::cerr << "Warning: Monomial->nullptr was called" << std::endl;
        m = new Monomial();
    }
        
