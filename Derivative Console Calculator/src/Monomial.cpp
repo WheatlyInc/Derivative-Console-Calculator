@@ -73,7 +73,6 @@ void Monomial::parseBuildTerm(const string& s, int& i)
 			// This copies the str_number that represents the exponent
 			string exp_str;
 			readDoubleFromStr(s, exp_str, i);
-			std::cout << "exp_str: " << exp_str << std::endl;
 			if (exp_str == "1") {
 				m_term = "x";
 				if (i == s.size())
