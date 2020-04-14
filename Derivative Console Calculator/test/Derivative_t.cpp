@@ -47,6 +47,25 @@ namespace {
 		EXPECT_TRUE(d.getValid());
 	};
 
+	/* dx/x (f(x) = 2x) == 2 */
+	TEST(constructDerivative, TwoX) {
+		Polynomial p("2x");
+		Derivative d(p);
+		stringstream oss;
+		oss << d;
+		EXPECT_EQ(oss.str(), "2");
+		EXPECT_TRUE(d.getValid());
+	};
+
+	/* dx/x (f(x) = 2x^1) == 2 */
+	TEST(constructDerivative, TWOxEXP1) {
+		Polynomial p("2x^1");
+		Derivative d(p);
+		stringstream oss;
+		oss << d;
+		EXPECT_EQ(oss.str(), "2");
+		EXPECT_TRUE(d.getValid());
+	};
 	
 	/* dx/x (f(x) = 900) == 0 */
 	TEST(constructDerivative, Constant) {

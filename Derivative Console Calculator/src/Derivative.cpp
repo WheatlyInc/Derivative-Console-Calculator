@@ -39,6 +39,10 @@ Monomial deriveMonomial(const Monomial& mono)
    string new_coef; 
    string new_term;
 
+   // Derive a constant
+   if (_term.empty())
+       return *(new Monomial("0"));
+
    /* Parsing _term */
    for (int k(0); k < _term.size(); k++) {
       if (_term[k] == 'x') {
