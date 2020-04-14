@@ -32,7 +32,22 @@ Monomial::Monomial(const string& s)
 	}
 	int i(0);
 	try {
-		if (isdigit(s[i]) || s[i] == minus) {
+		if (s[i] == minus) {
+			if (isdigit(s[i+1])) {
+				readDoubleFromStr(s, str_coef, i);
+				m_coefficient = stod(str_coef);
+				if (s[i] == 'x') {
+					parseBuildTerm(s, i);
+				}
+			}
+			else if (s[i+1] == 'x') {
+				m_coefficient = -1;
+				parseBuildTerm(s, ++i);
+			}
+			else
+				throw "Invalid character read after '-': In " + s + '\n';
+		}
+		else if (isdigit(s[i])) {
 			readDoubleFromStr(s, str_coef, i);
 			m_coefficient = stod(str_coef);
 			if (s[i] == 'x') {
@@ -66,9 +81,9 @@ void Monomial::parseBuildTerm(const string& s, int& i)
 	++i;
 	if (s[i] == '^' && i < s.size()) {
 		_term += '^';
-		int exp_Oper_Index(m_term.size() - 1);
+		int exp_Oper_Index(i);
 		++i;
-		if (i < s.size() && (isdigit(s[i]) || s[i] == minus) ) {
+		if (i < s.size() && (isdigit(s[i]) || s[i] == minus)) {
 			bool exp_index_still_num = true;
 			// This copies the str_number that represents the exponent
 			string exp_str;
@@ -191,6 +206,12 @@ ostream& operator<<(ostream& os, const Monomial& mono)
 			else
 				return os << mono.getTerm();
 		}
+		else if (mono.getCoef() == -1) {
+			if (mono.getTerm() == "")
+				return os << "-1";
+			else
+				return os << minus << mono.getTerm();
+		}
 		else {
 			if (mono.getTerm() == "")
 				return os << mono.getCoef();
@@ -247,9 +268,13 @@ void readDoubleFromStr(const string& s, string& str_double, int& i)
 		str_double += minus;
 		i++;
 	}
+	if (s[i] == '.')
+		throw "The character '.' was found at the beggining of a string expected to represent a double: In " + s +"\n";
 	for (i; i < s.size() && (isdigit(s[i]) || s[i] == '.'); i++) {
 		if (onePeriodRead && s[i] == '.')
 			throw "More than one '.' in number: " + s.substr(0, i + 1) + "\n";
+		if (!isdigit(s[i]) && s[i] != '.')
+			throw "Invalid character '" + s.substr(i, 0) + "' read when expecting a string representing a double: In " + s + "\n";
 		str_double += s[i];
 		if (s[i] == '.')
 			onePeriodRead = true;
