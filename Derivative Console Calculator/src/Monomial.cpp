@@ -38,51 +38,66 @@ Monomial::Monomial(const string& s)
 		omitTrailZeros(str_coef);
 		m_coefficient = stod(str_coef);
 		if (s[i] == 'x') {
-			m_term += 'x';
-			++i;
-			if (s[i] == '^' && i < s.size()) {
-				m_term += '^';
-				int exp_Oper_Index(m_term.size() - 1);
-				++i;
-				if (i < s.size() && isdigit(s[i])) {
-					bool exp_index_still_num = true;
-					// This copies the str_number that represents the exponent
-					string exp_str;
-					for (i; i < s.size() && (isdigit(s[i]) || s[i] == '.'); i++) {
-						exp_str += s[i];
-					}
-					omitTrailZeros(exp_str);
-
-					m_term += exp_str; 
-					if (exp_str == "1") {
-						m_term = "x";
-						if (++i == s.size())
-							m_valid_mono = true;
-						else
-							m_valid_mono = false;
-					}
-					if (exp_str == "0") {
-						m_term = "";
-						m_valid_mono = true; 
-					}
-					else if (isNum(exp_str)) {
-						m_valid_mono = true;
-					}
-					else {
-						m_valid_mono = false;
-					}
-				}
-				
-			}
-			else if (i == s.size()) {
-				// x has exp of "1"
-				m_valid_mono = true;
-			}
+			parseBuildTerm(s, i);
 		}
 	}
 	else if (s[0] == 'x') {
 		m_coefficient = 1;
-		m_term += s.substr(1);
+		parseBuildTerm(s, i);
+	}
+}
+
+/**
+ * Pre:
+ *		Is the first parse func to help and be called by the Monomial Constructor. This function expects
+ *		the constructor input string(&s), and the current index that the Constructor was on(&i), as parameters.
+ *
+ * Post:
+ *		Translates the input into an organized, readable term if validated
+ *		successfully.
+ **/
+void Monomial::parseBuildTerm(const string& s, int& i)
+{	
+	string _term = "x";
+	++i;
+	if (s[i] == '^' && i < s.size()) {
+		_term += '^';
+		int exp_Oper_Index(m_term.size() - 1);
+		++i;
+		if (i < s.size() && isdigit(s[i])) {
+			bool exp_index_still_num = true;
+			// This copies the str_number that represents the exponent
+			string exp_str;
+			for (i; i < s.size() && (isdigit(s[i]) || s[i] == '.'); i++) {
+				exp_str += s[i];
+			}
+			omitTrailZeros(exp_str);
+
+			std::cout << "exp_str: " << exp_str << std::endl;
+			if (exp_str == "1") {
+				m_term = "x";
+				if (i == s.size())
+					m_valid_mono = true;
+				else
+					m_valid_mono = false;
+			}
+			else if (exp_str == "0") {
+				m_term += "";
+				m_valid_mono = true;
+			}
+			else if (isNum(exp_str)) {
+				_term += exp_str;
+				m_term += _term;
+				m_valid_mono = true;
+			}
+			else {
+				m_valid_mono = false;
+			}
+		}
+	}
+	else if (i == s.size()) {
+		// x has exp of "1"
+		m_term = _term;
 		m_valid_mono = true;
 	}
 }

@@ -15,7 +15,7 @@ namespace {
 		Derivative d(p);
 		EXPECT_TRUE(d.getPolyn().empty());
 		EXPECT_FALSE(d.getValid());
-	}
+	};
 
 	/* dx/x (f(x) = 2x^3)  == 6x^2  */
 	TEST(constructDerivative, Non1CoefAndExponent) {
@@ -25,7 +25,7 @@ namespace {
 		oss << d;
 		EXPECT_EQ("6x^2", oss.str());
 		EXPECT_TRUE(d.getValid());
-	}
+	};
 	
 	TEST(constructDerivative, multiDigtCoefAndExponent) {
 		Polynomial p("20x^30");
@@ -34,5 +34,6 @@ namespace {
 		oss << d;
 		EXPECT_EQ(oss.str(), "600x^29");
 		EXPECT_TRUE(d.getValid());
-	}
+	};
+
 }

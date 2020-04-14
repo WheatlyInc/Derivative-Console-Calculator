@@ -11,7 +11,7 @@
 
 namespace {
 
-	/* Empty Monomial*/
+	/* Empty Monomial */
 	TEST(monomialsConstruct, empty) {
 		Monomial m;
 		EXPECT_EQ(m.getCoef(), 0);
@@ -19,7 +19,7 @@ namespace {
 		EXPECT_EQ(m.getValidMono(), false);
 	};
 
-	/* f(x) = 2x*/
+	/* f(x) = 2x */
 	TEST(monomialsConstruct, TWOx) {
 		Monomial m("2x");
 		stringstream oss;
@@ -30,7 +30,7 @@ namespace {
 		EXPECT_TRUE(m.getValidMono());
 	};
 
-	/* f(x) = 2x^3*/
+	/* f(x) = 2x^3 */
 	TEST(monomialsConstruct, TWOxEXP3) {
 		Monomial m("2x^3");
 		stringstream oss;
@@ -40,6 +40,17 @@ namespace {
 		EXPECT_EQ(oss.str(), "2x^3");
 		EXPECT_TRUE(m.getValidMono());
 	};
+
+	/* f(x) = x^2 */
+	TEST(monomialsConstruct, noCoef_with_TermEXP) {
+		Monomial m("x^2");
+		stringstream oss;
+		oss << m;
+		EXPECT_EQ(m.getCoef(), 1);
+		EXPECT_EQ(m.getTerm(), "x^2");
+		EXPECT_EQ(oss.str(), "x^2");
+		EXPECT_TRUE(m.getValidMono());
+	}
 
 
 	/* Omitting unnecesary exponent 0 on a simple monomial */
@@ -65,7 +76,7 @@ namespace {
 	}
 
 	/* Simplifying an coefficient */
-	TEST(monomialSimplify, oneCoefwithTerm) {
+	TEST(monomialSimplify, oneCoef_with_TermEXP) {
 		Monomial m("1x^2");
 		stringstream oss;
 		oss << m;

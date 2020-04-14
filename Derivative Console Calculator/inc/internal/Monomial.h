@@ -48,6 +48,7 @@ class Monomial
 	public:
 		Monomial();
 		Monomial(const string&);
+		void parseBuildTerm(const string&, int&);
 		void setValidMono(bool);
 		void omitTrailZeros(string&);
 		double getCoef() const;
