@@ -190,6 +190,16 @@ namespace {
 		EXPECT_TRUE(m.getValidMono());
 	}
 
+	/* f(x) = 2.0x^2.0 */
+	TEST(monomialsWithDecis, Two_pt_0_x_Exp_Two_pt_0) {
+		Monomial m("2.0x^2.0");
+		stringstream oss;
+		oss << m;
+		EXPECT_EQ(m.getCoef(), 2);
+		EXPECT_EQ(m.getTerm(), "x^2");
+		EXPECT_EQ(oss.str(), "2x^2");
+		EXPECT_TRUE(m.getValidMono());
+	}
 
 	/* Outputting Monomial */
 	TEST(monomialOutput, TwoxEXP3) {
