@@ -31,25 +31,29 @@ Monomial::Monomial(const string& s)
 		return;
 	}
 	int i(0);
-	if (isdigit(s[0])) {
-		for (i; i < s.size() && (isdigit(s[i]) || s[i] == '.'); i++) {
-			str_coef += s[i];
+	try {
+		if (isdigit(s[0])) {
+			readDoubleFromStr(s, str_coef, i);
+			m_coefficient = stod(str_coef);
+			if (s[i] == 'x') {
+				parseBuildTerm(s, i);
+			}
 		}
-		omitTrailZeros(str_coef);
-		m_coefficient = stod(str_coef);
-		if (s[i] == 'x') {
+		else if (s[0] == 'x') {
+			m_coefficient = 1;
 			parseBuildTerm(s, i);
 		}
 	}
-	else if (s[0] == 'x') {
-		m_coefficient = 1;
-		parseBuildTerm(s, i);
+	catch (string error) {
+		m_valid_mono = false;
+		std::cerr << "ERROR: " << error << std::endl;
 	}
+	
 }
 
 /**
  * Pre:
- *		Is the first parse func to help and be called by the Monomial Constructor. This function expects
+ *		Is the second parse func to help and be called by the Monomial Constructor. This function expects
  *		the constructor input string(&s), and the current index that the Constructor was on(&i), as parameters.
  *
  * Post:
@@ -68,10 +72,7 @@ void Monomial::parseBuildTerm(const string& s, int& i)
 			bool exp_index_still_num = true;
 			// This copies the str_number that represents the exponent
 			string exp_str;
-			for (i; i < s.size() && (isdigit(s[i]) || s[i] == '.'); i++) {
-				exp_str += s[i];
-			}
-			omitTrailZeros(exp_str);
+			readDoubleFromStr(s, exp_str, i);
 
 			std::cout << "exp_str: " << exp_str << std::endl;
 			if (exp_str == "1") {
@@ -111,23 +112,6 @@ void Monomial::setValidMono(bool b)
 	m_valid_mono = b;
 }
 
-/**
- * Pre:
- *		Used by the Monomial Class to remove trailing zeros from an input string. 
- *		Expects ONLY one "double" in the form of a string. The "double" may or may not have a decimal value.
- * Post: 
- *		Will remove every zero that follows a period. If there is no period, the function makes no changes.
-**/
-void Monomial::omitTrailZeros(string& str_Num)
-{
-	auto found = str_Num.find(".");
-	if (found == string::npos)
-		return;
-	str_Num.erase(str_Num.find_last_not_of('0') + 1, std::string::npos);
-	if (str_Num[str_Num.size() - 1] == '.')
-		str_Num.pop_back();
-}
-
 double Monomial::getCoef() const
 {
 	return m_coefficient;
@@ -146,11 +130,24 @@ string Monomial::getTerm() const
 **/
 bool Monomial::isNum(const string& s) const
 {
-	bool b = true;
-	for (int i(0); i < s.size() && b; i++)
-		if (!isdigit(s[i]))
-			b = false;
-	return b;
+	std::cout << "EH" << std::endl;
+	bool onePeriodRead = false;
+	if (s[0] == '.') {
+		std::cerr << "Ambiguous '.' at the beggining of num." << std::endl;
+		return false;
+	}
+	for (int i(0); i < s.size(); i++) {
+		if (s[i] == '.' && onePeriodRead) 
+			return false;
+		else if (!isdigit(s[i]) && s[i] != '.')
+			return false;
+		if (s[i] == '.') {
+			if (i == s.size() - 1)
+				return false;
+			onePeriodRead = true;
+		}		
+	}
+	return true;
 }
 
 /**
@@ -215,3 +212,43 @@ istream& operator>>(istream& is, Monomial&)
 	// TODO: insert return statement here
 }
 **/
+
+/**
+ * Pre:
+ *		Used by the Monomial Class to remove trailing zeros from an input string.
+ *		Expects ONLY one "double" in the form of a string. The "double" may or may not have a decimal value.
+ * Post:
+ *		Will remove every zero that follows a period. If there is no period, the function makes no changes.
+**/
+void omitTrailZeros(string& str_Num)
+{
+	auto found = str_Num.find(".");
+	if (found == string::npos)
+		return;
+	str_Num.erase(str_Num.find_last_not_of('0') + 1, std::string::npos);
+	if (str_Num[str_Num.size() - 1] == '.')
+		str_Num.pop_back();
+}
+
+/**
+ * Pre:
+ *		Is the first parse func to help and be called by the Monomial Constructor. This function expects
+ *		the constructor input string(&s), another string to store the double, and the current index
+ *		that the Constructor was on(&i), as parameters.
+ *
+ * Post:
+ *		Translates the input into an organized, readable double if validated
+ *		successfully.
+ **/
+void readDoubleFromStr(const string& s, string& str_double, int& i)
+{
+	bool onePeriodRead = false;
+	for (i; i < s.size() && (isdigit(s[i]) || s[i] == '.'); i++) {
+		if (onePeriodRead && s[i] == '.')
+			throw "More than one '.' in number: " + s.substr(0, i + 1) + "\n";
+		str_double += s[i];
+		if (s[i] == '.')
+			onePeriodRead = true;
+	}
+	omitTrailZeros(str_double);
+}

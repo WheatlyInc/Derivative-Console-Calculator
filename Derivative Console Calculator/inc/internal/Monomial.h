@@ -50,7 +50,6 @@ class Monomial
 		Monomial(const string&);
 		void parseBuildTerm(const string&, int&);
 		void setValidMono(bool);
-		void omitTrailZeros(string&);
 		double getCoef() const;
 		string getTerm() const;
 		bool isNum(const string&) const;
@@ -65,3 +64,5 @@ class Monomial
 		string m_term;
 };
 
+void omitTrailZeros(string&);
+void readDoubleFromStr(const string&, string&, int&);
