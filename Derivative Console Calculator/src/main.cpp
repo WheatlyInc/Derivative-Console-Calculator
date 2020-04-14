@@ -10,9 +10,12 @@
 **********************************************************************************************/
 
 
+#include <fstream>
 #include <iostream>
+#include <sstream>
 #include "../inc/internal/Derivative.h"
-
+#include <experimental/filesystem>
+namespace fs = std::experimental::filesystem;
 
 using std::cin;
 using std::cout;
@@ -21,10 +24,23 @@ using std::endl;
 
 int main()
 {
+    std::cout << "Current path is " << fs::current_path() << '\n';
+
+    string title;
+    std::ifstream titleFile;
+    titleFile.open("title.txt");
+    title.assign(std::istreambuf_iterator<char>(titleFile), std::istreambuf_iterator<char>()); // read titleFile
+    if (titleFile)
+        cout << "EXISTS!";
+    else
+        cout << "NOEXIST!";
+    cout << title << endl;
+
     cout << "Welcome to the Derivative Console Calculator!\n\n"
          << "Please enter a number in the form of a monomial to find the derivative\n"
          << "Follow general mathematical rules when inputing problems.\n"
-         << "(Use a single letter (x) as your variable only. Inputing polynomials, logs, simplifying like-terms not supported currently)\n"
+         << "   ==> Use a single letter (x) as your variable only.\n"
+         << "       (Inputing polynomials, logs, functions with 'e'simplifying like-terms not supported currently)\n"
          << "Constants and the rest of the term of a monomial is supported, but the constant goes first. For example:\n"
          << "\t2x\n"
          << "\t3x^2\n"

@@ -324,6 +324,7 @@
     <Text Include="CMakeLists.txt" />
     <Text Include="extern\googletest\CMakeLists.txt" />
     <Text Include="src\CMakeLists.txt" />
+    <Text Include="title.txt" />
     <Text Include="test\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>

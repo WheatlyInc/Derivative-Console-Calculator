@@ -509,6 +509,7 @@
     <Text Include="test\CMakeLists.txt" />
     <Text Include="CMakeLists.txt" />
     <Text Include="extern\googletest\CMakeLists.txt" />
+    <Text Include="title.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cmake\AddGoogleTest.cmake" />
