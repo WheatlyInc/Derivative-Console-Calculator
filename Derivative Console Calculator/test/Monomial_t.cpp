@@ -52,6 +52,17 @@ namespace {
 		EXPECT_TRUE(m.getValidMono());
 	}
 
+	/* f(x) = 500 */
+	TEST(monomialsConstruct, Constant) {
+		Monomial m("500");
+		stringstream oss;
+		oss << m;
+		EXPECT_EQ(m.getCoef(), 500);
+		EXPECT_EQ(m.getTerm(), "");
+		EXPECT_EQ(oss.str(), "500");
+		EXPECT_TRUE(m.getValidMono());
+	}
+
 
 	/* Omitting unnecesary exponent 0 on a simple monomial */
 	TEST(monomialSimplify, zeroExp) {

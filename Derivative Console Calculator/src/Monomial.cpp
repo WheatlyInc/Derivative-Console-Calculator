@@ -53,6 +53,9 @@ Monomial::Monomial(const string& s)
 			if (s[i] == 'x') {
 				parseBuildTerm(s, i);
 			}
+			else if (i == s.size()) {
+				m_valid_mono = true;
+			}
 		}
 		else if (s[i] == 'x') {
 			m_coefficient = 1;
