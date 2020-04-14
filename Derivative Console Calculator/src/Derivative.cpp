@@ -46,7 +46,7 @@ Monomial deriveMonomial(const Monomial& mono)
          if (_term[k] == '^') {
             int exp_Oper_Index = k;
             ++k;
-            if (isdigit(_term[k])) {
+            if (isdigit(_term[k]) || _term[k] == minus) {
                // Change coefficient
                string str_exponent;
                readDoubleFromStr(_term, str_exponent, k);

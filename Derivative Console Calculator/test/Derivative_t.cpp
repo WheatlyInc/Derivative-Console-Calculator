@@ -27,12 +27,23 @@ namespace {
 		EXPECT_TRUE(d.getValid());
 	};
 	
+	/* dx/x (f(x) = 20x^30) == 600x^29 */
 	TEST(constructDerivative, multiDigtCoefAndExponent) {
 		Polynomial p("20x^30");
 		Derivative d(p);
 		stringstream oss;
 		oss << d;
 		EXPECT_EQ(oss.str(), "600x^29");
+		EXPECT_TRUE(d.getValid());
+	};
+
+	/* dx/x (f(x) = 20x^-30) == -600x^-31 */
+	TEST(constructDerivative, multiDigtCoefAnd_Neg_Exponent) {
+		Polynomial p("20x^-30");
+		Derivative d(p);
+		stringstream oss;
+		oss << d;
+		EXPECT_EQ(oss.str(), "-600x^-31");
 		EXPECT_TRUE(d.getValid());
 	};
 
