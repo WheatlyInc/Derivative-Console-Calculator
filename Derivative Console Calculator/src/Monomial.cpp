@@ -74,7 +74,6 @@ void Monomial::parseBuildTerm(const string& s, int& i)
 			string exp_str;
 			readDoubleFromStr(s, exp_str, i);
 
-			std::cout << "exp_str: " << exp_str << std::endl;
 			if (exp_str == "1") {
 				m_term = "x";
 				if (i == s.size())
@@ -130,7 +129,6 @@ string Monomial::getTerm() const
 **/
 bool Monomial::isNum(const string& s) const
 {
-	std::cout << "EH" << std::endl;
 	bool onePeriodRead = false;
 	if (s[0] == '.') {
 		std::cerr << "Ambiguous '.' at the beggining of num." << std::endl;
