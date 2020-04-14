@@ -32,14 +32,14 @@ Monomial::Monomial(const string& s)
 	}
 	int i(0);
 	try {
-		if (isdigit(s[0])) {
+		if (isdigit(s[i]) || s[i] == minus) {
 			readDoubleFromStr(s, str_coef, i);
 			m_coefficient = stod(str_coef);
 			if (s[i] == 'x') {
 				parseBuildTerm(s, i);
 			}
 		}
-		else if (s[0] == 'x') {
+		else if (s[i] == 'x') {
 			m_coefficient = 1;
 			parseBuildTerm(s, i);
 		}
@@ -134,7 +134,10 @@ bool Monomial::isNum(const string& s) const
 		std::cerr << "Ambiguous '.' at the beggining of num." << std::endl;
 		return false;
 	}
-	for (int i(0); i < s.size(); i++) {
+	int i(0);
+	if (s[i] == minus)
+		i++;
+	for (i; i < s.size(); i++) {
 		if (s[i] == '.' && onePeriodRead) 
 			return false;
 		else if (!isdigit(s[i]) && s[i] != '.')
@@ -241,6 +244,10 @@ void omitTrailZeros(string& str_Num)
 void readDoubleFromStr(const string& s, string& str_double, int& i)
 {
 	bool onePeriodRead = false;
+	if (s[i] == minus) {
+		str_double += minus;
+		i++;
+	}
 	for (i; i < s.size() && (isdigit(s[i]) || s[i] == '.'); i++) {
 		if (onePeriodRead && s[i] == '.')
 			throw "More than one '.' in number: " + s.substr(0, i + 1) + "\n";

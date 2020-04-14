@@ -28,7 +28,7 @@ Polynomial::Polynomial(const string& s)
 
 		// Building the first monomial // 
 		/* Analyze the first character to be valid.*/
-	if (isdigit(s[0]) || s[0] == 'x') {
+	if (s[0] == minus || isdigit(s[0]) || s[0] == 'x') {
 		Monomial m1(s);
 		if (m1.getValidMono())
 			m_valid = true;
