@@ -168,6 +168,16 @@ namespace {
 		EXPECT_TRUE(m.getValidMono());
 	}
 
+	/* f(x) = 2x^1.0 */
+	TEST(monomialsWithDecis, Two_x_Exp_One_pt_Zero) {
+		Monomial m("2x^1.0");
+		stringstream oss;
+		oss << m;
+		EXPECT_EQ(m.getCoef(), 2);
+		EXPECT_EQ(m.getTerm(), "x");
+		EXPECT_EQ(oss.str(), "2x");
+		EXPECT_TRUE(m.getValidMono());
+	}
 
 	/* Outputting Monomial */
 	TEST(monomialOutput, TwoxEXP3) {
