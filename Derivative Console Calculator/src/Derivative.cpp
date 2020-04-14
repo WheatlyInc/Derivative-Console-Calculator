@@ -57,6 +57,8 @@ Monomial deriveMonomial(const Monomial& mono)
                m = new Monomial(new_coef + new_term);
             }
          }
+         else if (k == _term.size()) 
+             m = new Monomial(to_string(_coef));
       }
    }
    if (m == nullptr) {

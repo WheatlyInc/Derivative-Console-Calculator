@@ -47,4 +47,24 @@ namespace {
 		EXPECT_TRUE(d.getValid());
 	};
 
+	
+	/* dx/x (f(x) = 900) == 0 */
+	TEST(constructDerivative, Constant) {
+		Polynomial p("900");
+		Derivative d(p);
+		stringstream oss;
+		oss << d;
+		EXPECT_EQ(oss.str(), "0");
+		EXPECT_TRUE(d.getValid());
+	};
+
+	/* dx/x (f(x) = 2x^0) == 0 */
+	TEST(constructDerivative, TWOxEXP0) {
+		Polynomial p("2x^0");
+		Derivative d(p);
+		stringstream oss;
+		oss << d;
+		EXPECT_EQ(oss.str(), "0");
+		EXPECT_TRUE(d.getValid());
+	};
 }
