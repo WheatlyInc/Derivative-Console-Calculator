@@ -147,7 +147,7 @@ namespace {
 	}
 
 	/* f(x) = 1.0x^2 */
-	TEST(monomiasWithDecis, One_pt_0_Exp) {
+	TEST(monomialsWithDecis, One_pt_0_Exp) {
 		Monomial m("1.0x^2");
 		stringstream oss;
 		oss << m;
@@ -156,6 +156,18 @@ namespace {
 		EXPECT_EQ(oss.str(), "x^2");
 		EXPECT_TRUE(m.getValidMono());
 	}
+
+	/* f(x) = 2.000x^2 */
+	TEST(monomialsWithDecis, Two_pt_000_Exp) {
+		Monomial m("2.000x^2");
+		stringstream oss;
+		oss << m;
+		EXPECT_EQ(m.getCoef(), 2);
+		EXPECT_EQ(m.getTerm(), "x^2");
+		EXPECT_EQ(oss.str(), "2x^2");
+		EXPECT_TRUE(m.getValidMono());
+	}
+
 
 	/* Outputting Monomial */
 	TEST(monomialOutput, TwoxEXP3) {
