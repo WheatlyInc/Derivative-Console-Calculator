@@ -135,6 +135,17 @@ namespace {
 		EXPECT_TRUE(m1 != m2);
 	};
 	
+	/* f(x) = 1.1x^2 */
+	TEST(monomiasWithDecis, deci_Exp) {
+		Monomial m("1.1x^2");
+		stringstream oss;
+		oss << m;
+		EXPECT_EQ(m.getCoef(), 1.1);
+		EXPECT_EQ(m.getTerm(), "x^2");
+		EXPECT_EQ(oss.str(), "1.1x^2");
+		EXPECT_TRUE(m.getValidMono());
+	}
+
 
 	/* Outputting Monomial */
 	TEST(monomialOutput, TwoxEXP3) {
