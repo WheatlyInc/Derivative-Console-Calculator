@@ -49,8 +49,7 @@ Monomial deriveMonomial(const Monomial& mono)
             if (isdigit(_term[k])) {
                // Change coefficient
                string str_exponent;
-               for (k; k < _term.size() && isdigit(_term[k]); k++)
-                  str_exponent += _term[k];
+               readDoubleFromStr(_term, str_exponent, k);
                exp = stod(str_exponent);
                new_coef = to_string(exp * _coef);
                // Change term

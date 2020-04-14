@@ -13,24 +13,22 @@
 namespace {
 
 	TEST(polynomialsConstruct, empty) {
-		Polynomial f;
+		string s("");
+		stringstream oss;
+		Polynomial f(s);
 		EXPECT_TRUE(f.getPolyn().empty());
 		EXPECT_FALSE(f.getValid());
-		string s("");
-		stringstream iss(s), oss;
-		iss >> f; 
 		oss << f;
 		EXPECT_EQ("ERROR: Invalid Polnomial entered.\n", oss.str());
 	};
 
 	/* f(x) = 2x */
 	TEST(polynomialsConstruct, TWOx) {
-		Polynomial f;
 		string s("2x");
-		stringstream iss(s), oss;
-		iss >> f;
+		stringstream oss;
+		Polynomial f(s);
 		oss << f;
-		EXPECT_EQ(iss.str(), oss.str());
+		EXPECT_EQ(s, oss.str());
 	};
 
 }

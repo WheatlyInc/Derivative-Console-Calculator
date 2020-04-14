@@ -47,12 +47,12 @@ class Monomial
 {
 	public:
 		Monomial();
-		Monomial(string);
+		Monomial(const string&);
+		void parseBuildTerm(const string&, int&);
 		void setValidMono(bool);
-		void omitTrailZeros(string&);
 		double getCoef() const;
 		string getTerm() const;
-		bool isNum(const string) const;
+		bool isNum(const string&) const;
 		bool getValidMono() const;
 		bool operator==(const Monomial) const;
 		bool operator!=(const Monomial m) const;
@@ -64,3 +64,5 @@ class Monomial
 		string m_term;
 };
 
+void omitTrailZeros(string&);
+void readDoubleFromStr(const string&, string&, int&);

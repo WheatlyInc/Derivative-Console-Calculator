@@ -21,7 +21,6 @@ using std::endl;
 
 int main()
 {
-    string s;
     cout << "Welcome to the Derivative Console Calculator!\n\n"
          << "Please enter a number in the form of a monomial to find the derivative\n"
          << "Follow general mathematical rules when inputing problems.\n"
@@ -39,23 +38,21 @@ int main()
     while (cin)
     {
         cout << "\nf(x) = ";
-        Polynomial p;
+        string s;
         cin >> s;
-        stringstream iss(s);
-        iss >> p;
+        Polynomial p(s);
         if (p.getValid()) {
             Derivative d(p);
             if (d.getValid()) {
-            cout << "The derivative of " << p << " is :" << endl << d << endl;
+                cout << "The derivative of " << p << " is :" << endl << d << endl;
             }
             else {
-            std::cerr << "Couldn't find derivative: " << endl;
+                std::cerr << "Couldn't find derivative: " << endl;
             }
         }
         else {
             cout << "Please try again\n";
         }
-      
     }
     return 0;
 }

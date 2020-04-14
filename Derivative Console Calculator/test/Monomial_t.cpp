@@ -11,7 +11,7 @@
 
 namespace {
 
-	/* Empty Monomial*/
+	/* Empty Monomial */
 	TEST(monomialsConstruct, empty) {
 		Monomial m;
 		EXPECT_EQ(m.getCoef(), 0);
@@ -19,7 +19,7 @@ namespace {
 		EXPECT_EQ(m.getValidMono(), false);
 	};
 
-	/* f(x) = 2x*/
+	/* f(x) = 2x */
 	TEST(monomialsConstruct, TWOx) {
 		Monomial m("2x");
 		stringstream oss;
@@ -30,7 +30,7 @@ namespace {
 		EXPECT_TRUE(m.getValidMono());
 	};
 
-	/* f(x) = 2x^3*/
+	/* f(x) = 2x^3 */
 	TEST(monomialsConstruct, TWOxEXP3) {
 		Monomial m("2x^3");
 		stringstream oss;
@@ -40,6 +40,18 @@ namespace {
 		EXPECT_EQ(oss.str(), "2x^3");
 		EXPECT_TRUE(m.getValidMono());
 	};
+
+	/* f(x) = x^2 */
+	TEST(monomialsConstruct, noCoef_with_TermEXP) {
+		Monomial m("x^2");
+		stringstream oss;
+		oss << m;
+		EXPECT_EQ(m.getCoef(), 1);
+		EXPECT_EQ(m.getTerm(), "x^2");
+		EXPECT_EQ(oss.str(), "x^2");
+		EXPECT_TRUE(m.getValidMono());
+	}
+
 
 	/* Omitting unnecesary exponent 0 on a simple monomial */
 	TEST(monomialSimplify, zeroExp) {
@@ -64,7 +76,7 @@ namespace {
 	}
 
 	/* Simplifying an coefficient */
-	TEST(monomialSimplify, oneCoefwithTerm) {
+	TEST(monomialSimplify, oneCoef_with_TermEXP) {
 		Monomial m("1x^2");
 		stringstream oss;
 		oss << m;
@@ -85,11 +97,120 @@ namespace {
 		EXPECT_TRUE(m.getValidMono());
 	};
 
+
 	/* f(x) == f(x) where f(x) = x */
-	TEST(monomialsCompare, mEqualsm) {
+	TEST(monomialsCompare, m_Equal_m) {
 		Monomial m("x");
 		EXPECT_TRUE(m == m);
 	};
+
+	/* 2x^3 == 3x^2 should be false */
+	TEST(monomialsCompare, TWOxExp3_Equal_ThreeExp2) {
+		Monomial m1("2x^3"), m2("3x^2");
+		EXPECT_FALSE(m1 == m2);
+	};
+
+	/* An empty monomial should not equal a nonempty monomial */
+	TEST(monomialsCompare, empty_Equal_TWOxExp3) {
+		Monomial m1, m2("2x^3");
+		EXPECT_FALSE(m1 == m2);
+	};
+
+	/*** Retesting the previous 3 monomialsCompare tests, but using the != operator overloader ***/
+	/* f(x) == f(x) where f(x) = x */
+	TEST(monomialsCompare, m_NotEq_m) {
+		Monomial m("x");
+		EXPECT_FALSE(m != m);
+	};
+
+	/* 2x^3 == 3x^2 should be false */
+	TEST(monomialsCompare, TWOxExp3_NotEq_ThreeExp2) {
+		Monomial m1("2x^3"), m2("3x^2");
+		EXPECT_TRUE(m1 != m2);
+	};
+
+	/* An empty monomial should not equal a nonempty monomial */
+	TEST(monomialsCompare, empty_NotEq_TWOxExp3) {
+		Monomial m1, m2("2x^3");
+		EXPECT_TRUE(m1 != m2);
+	};
+	
+	/* f(x) = 1.1x^2 */
+	TEST(monomiasWithDecis, deci_Exp) {
+		Monomial m("1.1x^2");
+		stringstream oss;
+		oss << m;
+		EXPECT_EQ(m.getCoef(), 1.1);
+		EXPECT_EQ(m.getTerm(), "x^2");
+		EXPECT_EQ(oss.str(), "1.1x^2");
+		EXPECT_TRUE(m.getValidMono());
+	}
+
+	/* f(x) = 1.0x^2 */
+	TEST(monomialsWithDecis, One_pt_0_Exp) {
+		Monomial m("1.0x^2");
+		stringstream oss;
+		oss << m;
+		EXPECT_EQ(m.getCoef(), 1);
+		EXPECT_EQ(m.getTerm(), "x^2");
+		EXPECT_EQ(oss.str(), "x^2");
+		EXPECT_TRUE(m.getValidMono());
+	}
+
+	/* f(x) = 2.000x^2 */
+	TEST(monomialsWithDecis, Two_pt_000_Exp) {
+		Monomial m("2.000x^2");
+		stringstream oss;
+		oss << m;
+		EXPECT_EQ(m.getCoef(), 2);
+		EXPECT_EQ(m.getTerm(), "x^2");
+		EXPECT_EQ(oss.str(), "2x^2");
+		EXPECT_TRUE(m.getValidMono());
+	}
+
+	/* f(x) = 2x^1.0 */
+	TEST(monomialsWithDecis, Two_x_Exp_One_pt_Zero) {
+		Monomial m("2x^1.0");
+		stringstream oss;
+		oss << m;
+		EXPECT_EQ(m.getCoef(), 2);
+		EXPECT_EQ(m.getTerm(), "x");
+		EXPECT_EQ(oss.str(), "2x");
+		EXPECT_TRUE(m.getValidMono());
+	}
+
+	/* f(x) = 2x^2.000 */
+	TEST(monomialsWithDecis, Two_x_Exp_Two_pt_000) {
+		Monomial m("2x^2.000");
+		stringstream oss;
+		oss << m;
+		EXPECT_EQ(m.getCoef(), 2);
+		EXPECT_EQ(m.getTerm(), "x^2");
+		EXPECT_EQ(oss.str(), "2x^2");
+		EXPECT_TRUE(m.getValidMono());
+	}
+
+	/* f(x) = x^2.000 */
+	TEST(monomialsWithDecis, x_Exp_Two_pt_000) {
+		Monomial m("x^2.000");
+		stringstream oss;
+		oss << m;
+		EXPECT_EQ(m.getCoef(), 1);
+		EXPECT_EQ(m.getTerm(), "x^2");
+		EXPECT_EQ(oss.str(), "x^2");
+		EXPECT_TRUE(m.getValidMono());
+	}
+
+	/* f(x) = 2.0x^2.0 */
+	TEST(monomialsWithDecis, Two_pt_0_x_Exp_Two_pt_0) {
+		Monomial m("2.0x^2.0");
+		stringstream oss;
+		oss << m;
+		EXPECT_EQ(m.getCoef(), 2);
+		EXPECT_EQ(m.getTerm(), "x^2");
+		EXPECT_EQ(oss.str(), "2x^2");
+		EXPECT_TRUE(m.getValidMono());
+	}
 
 	/* Outputting Monomial */
 	TEST(monomialOutput, TwoxEXP3) {
