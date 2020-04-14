@@ -212,6 +212,39 @@ namespace {
 		EXPECT_TRUE(m.getValidMono());
 	}
 
+	/* f(x) = -2x^2 */
+	TEST(monomialsWithNegs, neg2_x_Exp2) {
+		Monomial m("-2x^2");
+		stringstream oss;
+		oss << m;
+		EXPECT_EQ(m.getCoef(), -2);
+		EXPECT_EQ(m.getTerm(), "x^2");
+		EXPECT_EQ(oss.str(), "-2x^2");
+		EXPECT_TRUE(m.getValidMono());
+	}
+
+	/* f(x) = 2x^-2 */
+	TEST(monomialsWithNegs, TWO_x_Exp_neg2) {
+		Monomial m("2x^-2");
+		stringstream oss;
+		oss << m;
+		EXPECT_EQ(m.getCoef(), 2);
+		EXPECT_EQ(m.getTerm(), "x^-2");
+		EXPECT_EQ(oss.str(), "2x^-2");
+		EXPECT_TRUE(m.getValidMono());
+	}
+
+	/* f(x) = 2x^-2 */
+	TEST(monomialsWithNegs, neg2_x_Exp_neg2) {
+		Monomial m("-2x^-2");
+		stringstream oss;
+		oss << m;
+		EXPECT_EQ(m.getCoef(), -2);
+		EXPECT_EQ(m.getTerm(), "x^-2");
+		EXPECT_EQ(oss.str(), "-2x^-2");
+		EXPECT_TRUE(m.getValidMono());
+	}
+
 	/* Outputting Monomial */
 	TEST(monomialOutput, TwoxEXP3) {
 		Monomial m("2x^3");
