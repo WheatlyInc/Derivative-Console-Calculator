@@ -52,6 +52,17 @@ namespace {
 		EXPECT_TRUE(m.getValidMono());
 	}
 
+	/* f(x) = 500 */
+	TEST(monomialsConstruct, Constant) {
+		Monomial m("500");
+		stringstream oss;
+		oss << m;
+		EXPECT_EQ(m.getCoef(), 500);
+		EXPECT_EQ(m.getTerm(), "");
+		EXPECT_EQ(oss.str(), "500");
+		EXPECT_TRUE(m.getValidMono());
+	}
+
 
 	/* Omitting unnecesary exponent 0 on a simple monomial */
 	TEST(monomialSimplify, zeroExp) {
@@ -242,6 +253,17 @@ namespace {
 		EXPECT_EQ(m.getCoef(), -2);
 		EXPECT_EQ(m.getTerm(), "x^-2");
 		EXPECT_EQ(oss.str(), "-2x^-2");
+		EXPECT_TRUE(m.getValidMono());
+	}
+
+	/* f(x) = -x^2 */
+	TEST(monomialsWithNegs, neg_x_Exp_2) {
+		Monomial m("-x^2");
+		stringstream oss;
+		oss << m;
+		EXPECT_EQ(m.getCoef(), -1);
+		EXPECT_EQ(m.getTerm(), "x^2");
+		EXPECT_EQ(oss.str(), "-x^2");
 		EXPECT_TRUE(m.getValidMono());
 	}
 

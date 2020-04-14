@@ -27,6 +27,7 @@ namespace {
 		EXPECT_TRUE(d.getValid());
 	};
 	
+	/* dx/x (f(x) = 20x^30) == 600x^29 */
 	TEST(constructDerivative, multiDigtCoefAndExponent) {
 		Polynomial p("20x^30");
 		Derivative d(p);
@@ -36,4 +37,53 @@ namespace {
 		EXPECT_TRUE(d.getValid());
 	};
 
+	/* dx/x (f(x) = 20x^-30) == -600x^-31 */
+	TEST(constructDerivative, multiDigtCoefAnd_Neg_Exponent) {
+		Polynomial p("20x^-30");
+		Derivative d(p);
+		stringstream oss;
+		oss << d;
+		EXPECT_EQ(oss.str(), "-600x^-31");
+		EXPECT_TRUE(d.getValid());
+	};
+
+	/* dx/x (f(x) = 2x) == 2 */
+	TEST(constructDerivative, TwoX) {
+		Polynomial p("2x");
+		Derivative d(p);
+		stringstream oss;
+		oss << d;
+		EXPECT_EQ(oss.str(), "2");
+		EXPECT_TRUE(d.getValid());
+	};
+
+	/* dx/x (f(x) = 2x^1) == 2 */
+	TEST(constructDerivative, TWOxEXP1) {
+		Polynomial p("2x^1");
+		Derivative d(p);
+		stringstream oss;
+		oss << d;
+		EXPECT_EQ(oss.str(), "2");
+		EXPECT_TRUE(d.getValid());
+	};
+	
+	/* dx/x (f(x) = 900) == 0 */
+	TEST(constructDerivative, Constant) {
+		Polynomial p("900");
+		Derivative d(p);
+		stringstream oss;
+		oss << d;
+		EXPECT_EQ(oss.str(), "0");
+		EXPECT_TRUE(d.getValid());
+	};
+
+	/* dx/x (f(x) = 2x^0) == 0 */
+	TEST(constructDerivative, TWOxEXP0) {
+		Polynomial p("2x^0");
+		Derivative d(p);
+		stringstream oss;
+		oss << d;
+		EXPECT_EQ(oss.str(), "0");
+		EXPECT_TRUE(d.getValid());
+	};
 }

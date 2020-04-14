@@ -39,6 +39,10 @@ Monomial deriveMonomial(const Monomial& mono)
    string new_coef; 
    string new_term;
 
+   // Derive a constant
+   if (_term.empty())
+       return *(new Monomial("0"));
+
    /* Parsing _term */
    for (int k(0); k < _term.size(); k++) {
       if (_term[k] == 'x') {
@@ -46,7 +50,7 @@ Monomial deriveMonomial(const Monomial& mono)
          if (_term[k] == '^') {
             int exp_Oper_Index = k;
             ++k;
-            if (isdigit(_term[k])) {
+            if (isdigit(_term[k]) || _term[k] == minus) {
                // Change coefficient
                string str_exponent;
                readDoubleFromStr(_term, str_exponent, k);
@@ -57,10 +61,12 @@ Monomial deriveMonomial(const Monomial& mono)
                m = new Monomial(new_coef + new_term);
             }
          }
+         else if (k == _term.size()) 
+             m = new Monomial(to_string(_coef));
       }
    }
    if (m == nullptr) {
-       std::cout << "nullptr was called" << std::endl;
+       std::cerr << "Warning: Monomial->nullptr was called" << std::endl;
        m = new Monomial();
    }
        
